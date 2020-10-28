@@ -25,7 +25,6 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private ObservableCollection<Merchandise> MerchandiseList;
 
         public MainPage()
         {
@@ -35,22 +34,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
 
             Customer customer = new Customer("Johan", "Perstorp");
-            PopulateList();
             
 
         }
-        public void PopulateList()
-        {
-            MerchandiseList = new ObservableCollection<Merchandise>();
-            MerchandiseList.Add(new Merchandise("Red Bull", "Djävulen", 15));
-            MerchandiseList.Add(new Merchandise("Coca cola", "Coca cola", 12));
-            MerchandiseList.Add(new Merchandise("Apelsinejuice", "Grekland", 13));
-            MerchandiseList.Add(new Merchandise("C#", "Microsoft", 5));
-            MerchandiseList.Add(new Merchandise("Sand", "naturen", 5));
-            MerchandiseList.Add(new Merchandise("Hallonsaft", "Saftblandarna", 15));
-            MerchandiseList.Add(new Merchandise("Vatten", "Havet", 145));
-            MerchandiseList.Add(new Merchandise("Fanta", "Coke company", 125));
-        }
+        
 
         private void ButtonStock_Click(object sender, RoutedEventArgs e)
         {
