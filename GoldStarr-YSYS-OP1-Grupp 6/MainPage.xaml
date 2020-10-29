@@ -9,9 +9,14 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <Frame x:Name="MainFrame" Content="" Margin="0,80,0,0"/>
-        <Button x:Name="ButtonMain" Content="Button" Margin="10,10,0,0" VerticalAlignment="Top" Height="46" Width="113"/>
-        <Button x:Name="ButtonStock" Content="Larger" Margin="140,10,0,0" VerticalAlignment="Top" Height="46" Width="113" Click="ButtonStock_Click"/>
+        
+        <Frame x:Name="MainFrame" Content="" Margin="140,80,0,0">
+            
+        </Frame>
+        <Button x:Name="ButtonMain" Content="Kunder" Margin="10,150,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold"/>
+        <Button x:Name="ButtonStock" Content="Lager" Margin="10,80,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" Click="ButtonStock_Click" FontWeight="Bold"/>
+        <TextBlock x:Name="CompanyName" HorizontalAlignment="Left" Margin="372,10,0,0" Text="GoldStarr Trading" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="514" FontSize="40" SelectionHighlightColor="#FFCBF7BB" Foreground="#FFA4B09F" FontFamily="Copperplate Gothic Light" TextAlignment="Center"/>
+        <Button x:Name="OrderButtom" Content="Ny Order" Margin="10,222,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold"/>
 
     </Grid>
 </Page>

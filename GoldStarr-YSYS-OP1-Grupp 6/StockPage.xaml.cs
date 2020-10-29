@@ -36,16 +36,20 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         public void PopulateList()
         {
             MerchandiseList = new ObservableCollection<Merchandise>();
-            MerchandiseList.Add(new Merchandise("Red Bull", "Djävulen", 15));
-            MerchandiseList.Add(new Merchandise("Coca cola", "Coca cola", 12));
-            MerchandiseList.Add(new Merchandise("Apelsinejuice", "Grekland", 13));
-            MerchandiseList.Add(new Merchandise("C#", "Microsoft", 5));
-            MerchandiseList.Add(new Merchandise("Sand", "naturen", 5));
-            MerchandiseList.Add(new Merchandise("Hallonsaft", "Saftblandarna", 15));
-            MerchandiseList.Add(new Merchandise("Vatten", "Havet", 145));
+            MerchandiseList.Add(new Merchandise("Red Bull", "Red Bull Österrike", 15));
+            MerchandiseList.Add(new Merchandise("Coca cola", "Spendrups", 12));
+            MerchandiseList.Add(new Merchandise("Apelsinejuice", "Ica", 13));
+            MerchandiseList.Add(new Merchandise("Citronjuice", "Ica", 5));
+            MerchandiseList.Add(new Merchandise("Skånerost", "Zoega's", 5));
+            MerchandiseList.Add(new Merchandise("Hallonsaft", "BOB", 15));
+            MerchandiseList.Add(new Merchandise("Aloe Vera", "Nobe", 145));
             MerchandiseList.Add(new Merchandise("Fanta", "Coke company", 125));
             Merchandise1.ItemsSource = MerchandiseList;
         }
-        
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
