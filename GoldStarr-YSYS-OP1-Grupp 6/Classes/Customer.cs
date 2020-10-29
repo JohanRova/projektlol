@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
 {
+   
     class Customer
     {
         public string Name { get; set; }

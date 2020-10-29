@@ -9,7 +9,7 @@
    
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="Lagersaldo" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="Stock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
         <ListView x:Name="Merchandise1" Width="500" Height="500">
            
             <ListView.ItemTemplate>

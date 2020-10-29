@@ -44,5 +44,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MainFrame.Navigate(typeof(StockPage));
 
         }
+
+        private void ButtonMain_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(CustomerList));
+        }
     }
 }
