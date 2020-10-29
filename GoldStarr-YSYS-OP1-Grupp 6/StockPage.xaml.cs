@@ -26,12 +26,11 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
     {
         private ObservableCollection<Merchandise> MerchandiseList;
 
-
         public StockPage()
         {
             this.InitializeComponent();
             PopulateList();
-            UpdateList();
+            
         }
 
 
@@ -60,8 +59,12 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
 
         private void onClickStockEnter(object sender, RoutedEventArgs e)
         {
-            int amountadded = Int32.Parse(AmountBox.Text);
-            MerchandiseList[index].IncreaseStock(amountadded);
+            Merchandise merchtemp = MerchandiseList[index];
+            merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));
+            //MerchandiseList.RemoveAt(index);
+            //MerchandiseList.Add(merchtemp);
+            MerchandiseList.Insert(index, merchtemp);
+            MerchandiseList.RemoveAt(index +1);
         }
     }
 }

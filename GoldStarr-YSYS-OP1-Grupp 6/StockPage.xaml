@@ -12,15 +12,15 @@
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="Stock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="Merchandise1" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" Height="896" VerticalAlignment="Top" HorizontalAlignment="Left" IsItemClickEnabled="True">
+        <ListView x:Name="Merchandise1" ItemsSource="{x:Bind MerchandiseList, Mode=TwoWay}" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" Height="896" VerticalAlignment="Top" HorizontalAlignment="Left" IsItemClickEnabled="True">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel x:Name="Flabben" Orientation="Horizontal">
 
-                        <TextBlock Text="{Binding Name}" Margin="5, 10, 0, 0" Width="125"/>
-                        <TextBlock Text="{Binding Supplier}" Margin="5, 10, 0, 0" Width="150"/>
-                        <TextBlock Text="{Binding Stock}" Margin="5, 10, 0, 0" Width="50"/>
+                        <TextBlock Text="{Binding Name, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="125"/>
+                        <TextBlock Text="{Binding Supplier, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="150"/>
+                        <TextBlock Text="{Binding Stock, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="50"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
