@@ -26,10 +26,12 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
     {
         private ObservableCollection<Merchandise> MerchandiseList;
 
+
         public StockPage()
         {
             this.InitializeComponent();
             PopulateList();
+            UpdateList();
         }
 
 
@@ -44,12 +46,22 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             MerchandiseList.Add(new Merchandise("Hallonsaft", "BOB", 15));
             MerchandiseList.Add(new Merchandise("Aloe Vera", "Nobe", 145));
             MerchandiseList.Add(new Merchandise("Fanta", "Coke company", 125));
-            Merchandise1.ItemsSource = MerchandiseList;
         }
 
+        public void UpdateList()
+        {
+            Merchandise1.ItemsSource = MerchandiseList;
+        }
+        int index;
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            index = Merchandise1.SelectedIndex;
+        }
 
+        private void onClickStockEnter(object sender, RoutedEventArgs e)
+        {
+            int amountadded = Int32.Parse(AmountBox.Text);
+            MerchandiseList[index].IncreaseStock(amountadded);
         }
     }
 }
