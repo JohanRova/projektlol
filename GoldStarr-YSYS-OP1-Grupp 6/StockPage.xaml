@@ -5,17 +5,19 @@
     xmlns:local="using:GoldStarr_YSYS_OP1_Grupp_6.InFramePages"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-   
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="Stock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="Merchandise1" Width="500" Height="500">
-           
+        <ListView x:Name="Merchandise1" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" Height="896" VerticalAlignment="Top" HorizontalAlignment="Left">
+
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel x:Name="Flabben" Orientation="Horizontal">
-                       
+
                         <TextBlock Text="{Binding Name}" Margin="5, 10, 0, 0" Width="125"/>
                         <TextBlock Text="{Binding Supplier}" Margin="5, 10, 0, 0" Width="150"/>
                         <TextBlock Text="{Binding Stock}" Margin="5, 10, 0, 0" Width="50"/>
@@ -23,7 +25,6 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView SelectionChanged="ListView_SelectionChanged"/>
 
     </Grid>
 </Page>
