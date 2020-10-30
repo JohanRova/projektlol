@@ -25,29 +25,22 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private Store store;
 
         public MainPage()
         {
             this.InitializeComponent();
-
-
-
-
-            Customer customer = new Customer("Johan", "Perstorp");
-            
-
+            store = new Store();
         }
-        
 
         private void ButtonStock_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(StockPage));
-
+            MainFrame.Navigate(typeof(StockPage), store);
         }
 
         private void ButtonMain_Click(object sender, RoutedEventArgs e)
         {
-            MainFrame.Navigate(typeof(CustomerList));
+            MainFrame.Navigate(typeof(CustomerList), store);
         }
     }
 }

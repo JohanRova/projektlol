@@ -24,33 +24,19 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
     /// </summary>
     public sealed partial class StockPage : Page
     {
+        private Store store;
         private ObservableCollection<Merchandise> MerchandiseList;
 
         public StockPage()
         {
             this.InitializeComponent();
-            PopulateList();
-            
-        }
-
-
-        public void PopulateList()
-        {
-            MerchandiseList = new ObservableCollection<Merchandise>();
-            MerchandiseList.Add(new Merchandise("Red Bull", "Red Bull Österrike", 15));
-            MerchandiseList.Add(new Merchandise("Coca cola", "Spendrups", 12));
-            MerchandiseList.Add(new Merchandise("Apelsinejuice", "Ica", 13));
-            MerchandiseList.Add(new Merchandise("Citronjuice", "Ica", 5));
-            MerchandiseList.Add(new Merchandise("Skånerost", "Zoega's", 5));
-            MerchandiseList.Add(new Merchandise("Hallonsaft", "BOB", 15));
-            MerchandiseList.Add(new Merchandise("Aloe Vera", "Nobe", 145));
-            MerchandiseList.Add(new Merchandise("Fanta", "Coke company", 125));
         }
 
         public void UpdateList()
         {
             Merchandise1.ItemsSource = MerchandiseList;
         }
+
         int index;
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -61,10 +47,16 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         {
             Merchandise merchtemp = MerchandiseList[index];
             merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));
-            //MerchandiseList.RemoveAt(index);
-            //MerchandiseList.Add(merchtemp);
             MerchandiseList.Insert(index, merchtemp);
-            MerchandiseList.RemoveAt(index +1);
+            MerchandiseList.RemoveAt(index + 1);
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            store = (Store)e.Parameter; // get parameter
+            MerchandiseList = store.MerchandiseCollection;
+        }
+
     }
 }
