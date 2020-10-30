@@ -25,14 +25,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
     public sealed partial class CustomerList : Page
     {
         private Store store;
-        private ObservableCollection<Customer> CustomerCollection;
         public CustomerList()
         {
             this.InitializeComponent();
-        }
-        public void PopulateCustomerList()
-        {
-            CustomersX.ItemsSource = CustomerCollection;
         }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -43,7 +38,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             base.OnNavigatedTo(e);
             store = (Store)e.Parameter; // get parameter
-            CustomerCollection = store.CustomerCollection;
+            CustomersX.ItemsSource = store.CustomerCollection;
         }
     }
 }

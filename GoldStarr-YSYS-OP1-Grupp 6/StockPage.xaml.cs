@@ -32,11 +32,6 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             this.InitializeComponent();
         }
 
-        public void UpdateList()
-        {
-            Merchandise1.ItemsSource = MerchandiseList;
-        }
-
         int index;
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
