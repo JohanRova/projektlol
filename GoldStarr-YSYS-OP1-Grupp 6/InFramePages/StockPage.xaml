@@ -12,7 +12,7 @@
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="Stock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="Merchandise1" ItemsSource="{x:Bind MerchandiseList, Mode=TwoWay}" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" Height="896" VerticalAlignment="Top" HorizontalAlignment="Left" IsItemClickEnabled="True">
+        <ListView x:Name="Merchandise1" ItemsSource="{x:Bind MerchandiseList, Mode=TwoWay}" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" HorizontalAlignment="Left" IsItemClickEnabled="True" Height="1007" VerticalAlignment="Top">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -28,8 +28,8 @@
         <Grid Margin="515,73,0,0" HorizontalAlignment="Left" Width="655" Height="896" VerticalAlignment="Top">
             <TextBlock x:Name="StockChangeText" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Change in stock" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="248" FontSize="24"/>
             <TextBox x:Name="AmountBox" HorizontalAlignment="Left" Margin="10,47,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="True" PlaceholderText="Amount" Width="100"/>
-            <TextBlock HorizontalAlignment="Left" Margin="270,11,0,0" Text="When a merchandise delivery comes in, select the item in the list and enter the amount that was delivered to the warehouse. " TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="241"/>
-            <Button Content="Enter" Margin="29,102,0,0" VerticalAlignment="Top" Click="onClickStockEnter"/>
+            <TextBlock x:Name="ChangeStockText" HorizontalAlignment="Left" Margin="270,11,0,0" Text="When a merchandise delivery comes in, select the item in the list and enter the amount that was delivered to the warehouse. " TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="241"/>
+            <Button x:Name="EnterButton" Content="Enter" Margin="29,102,0,0" VerticalAlignment="Top" Click="onClickStockEnter"/>
         </Grid>
 
     </Grid>

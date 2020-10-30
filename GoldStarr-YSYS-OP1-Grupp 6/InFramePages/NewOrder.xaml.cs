@@ -1,4 +1,6 @@
 ﻿using GoldStarr_YSYS_OP1_Grupp_6.Classes;
+using GoldStarr_YSYS_OP1_Grupp_6.InFramePages;
+using GoldStarr_YSYS_OP1_Grupp_6;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -37,6 +39,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             store = (Store)e.Parameter; // get parameter
             CustomerCollection = store.CustomerCollection;
             inNewOrderFramCustomer.Navigate(typeof(CustomerList), store);
+            inNewOrderFramStock.Navigate(typeof(StockPage), store);
+            
         }
     }
 }

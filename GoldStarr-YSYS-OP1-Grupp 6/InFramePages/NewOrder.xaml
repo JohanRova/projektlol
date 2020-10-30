@@ -9,8 +9,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="312" FontSize="24"/>
-        <Frame x:Name="inNewOrderFramCustomer" Content="" Margin="10,47,1400,0"/>
+        <TextBlock x:Name="LOLE" HorizontalAlignment="Left" Margin="10,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="312" FontSize="24"/>
+        <Frame x:Name="inNewOrderFramCustomer" Content="" Margin="10,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
+        <Frame x:Name="inNewOrderFramStock" Content="" Margin="520,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
 
     </Grid>
 </Page>

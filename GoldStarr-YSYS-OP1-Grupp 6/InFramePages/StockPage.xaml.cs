@@ -53,5 +53,13 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             MerchandiseList = store.MerchandiseCollection;
         }
 
+        public void HideExtras()
+        {
+            StockChangeText.Visibility = Visibility.Collapsed;
+            ChangeStockText.Visibility = Visibility.Collapsed;
+            AmountBox.Visibility = Visibility.Collapsed;
+            EnterButton.Visibility = Visibility.Collapsed;
+        }
+
     }
 }

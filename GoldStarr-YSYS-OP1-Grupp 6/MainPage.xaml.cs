@@ -32,6 +32,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             this.InitializeComponent();
             
         }
+        
 
         private void ButtonStock_Click(object sender, RoutedEventArgs e)
         {
