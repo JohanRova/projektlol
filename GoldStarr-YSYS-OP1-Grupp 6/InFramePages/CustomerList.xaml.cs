@@ -1,5 +1,4 @@
 ﻿using GoldStarr_YSYS_OP1_Grupp_6.Classes;
-using GoldStarr_YSYS_OP1_Grupp_6.InFramePages;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -16,36 +15,32 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
+// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace GoldStarr_YSYS_OP1_Grupp_6
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class CustomerList : Page
     {
-        private Store store = new Store();
-
-        public MainPage()
+        private Store store;
+        private ObservableCollection<Customer> CustomerCollection;
+        public CustomerList()
         {
             this.InitializeComponent();
-            
+        }
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
-        private void ButtonStock_Click(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            MainFrame.Navigate(typeof(StockPage), store);
-        }
-
-        private void ButtonMain_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(typeof(CustomerList), store);
-        }
-
-        private void OrderButtom_Click(object sender, RoutedEventArgs e)
-        {
-            MainFrame.Navigate(typeof(NewOrder), store);
+            base.OnNavigatedTo(e);
+            store = (Store)e.Parameter; // get parameter
+            CustomerCollection = store.CustomerCollection;
+            CustomersX.ItemsSource = CustomerCollection;
         }
     }
 }

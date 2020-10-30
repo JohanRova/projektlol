@@ -9,20 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
+        <ListView SelectionChanged="ListView_SelectionChanged"/>
+
+
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="List of customers" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="CustomersX" Width="500" Height="500">
+        <ListView x:Name="CustomersX" Width="500" Height="997" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" IsItemClickEnabled="True">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel x:Name="StackList" Orientation="Horizontal">
 
                         <TextBlock Text="{Binding Name}" Margin="5, 10, 0, 0" Width="125"/>
-                        
+
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <ListView SelectionChanged="ListView_SelectionChanged"/>
 
 
     </Grid>

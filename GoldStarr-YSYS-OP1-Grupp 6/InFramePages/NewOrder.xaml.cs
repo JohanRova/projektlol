@@ -22,23 +22,21 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class CustomerList : Page
+    public sealed partial class NewOrder : Page
     {
         private Store store;
-        public CustomerList()
+        private ObservableCollection<Customer> CustomerCollection;
+
+        public NewOrder()
         {
             this.InitializeComponent();
         }
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
             store = (Store)e.Parameter; // get parameter
-            CustomersX.ItemsSource = store.CustomerCollection;
+            CustomerCollection = store.CustomerCollection;
+            inNewOrderFramCustomer.Navigate(typeof(CustomerList), store);
         }
     }
 }
