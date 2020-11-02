@@ -122,6 +122,7 @@
     <Compile Include="Classes\Customer.cs" />
     <Compile Include="Classes\CustomerOrder.cs" />
     <Compile Include="Classes\Merchandise.cs" />
+    <Compile Include="Classes\TempStores.cs" />
     <Compile Include="InFramePages\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>

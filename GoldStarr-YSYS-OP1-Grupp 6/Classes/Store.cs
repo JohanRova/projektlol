@@ -37,14 +37,14 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public void PopulateCustomerList()
         {
             CustomerCollection.Add(new Customer("Abdi Andersson", "Fosievägen, Malmö"));
-            CustomerCollection.Add(new Customer("Thomas Löhr", "Regementsgatan 31, Malmö", 0734958965));
-            CustomerCollection.Add(new Customer("Jony Kiiskinen", "Malmövägen, Lund", 0733456585));
-            CustomerCollection.Add(new Customer("Fisnik Haliti", "Industrigatan, Malmö", 0736987456));
+            CustomerCollection.Add(new Customer("Thomas Löhr", "Regementsgatan 31, Malmö", "0734958965"));
+            CustomerCollection.Add(new Customer("Jony Kiiskinen", "Malmövägen, Lund", "0733456585"));
+            CustomerCollection.Add(new Customer("Fisnik Haliti", "Industrigatan, Malmö", "0736987456"));
             CustomerCollection.Add(new Customer("Johan Rova", "Perstorp"));
             CustomerCollection.Add(new Customer("Elin Ortega", "Åkarp"));
-            CustomerCollection.Add(new Customer("Christian Elm", "Mariedalsvägen 15", 0733456145));
+            CustomerCollection.Add(new Customer("Christian Elm", "Mariedalsvägen 15", "0733456145"));
             CustomerCollection.Add(new Customer("Carl Malmström", "Värnhem"));
-            CustomerCollection.Add(new Customer("Armin Ljalic", "Lundavägen 72", 0721456125));
+            CustomerCollection.Add(new Customer("Armin Ljalic", "Lundavägen 72", "0721456125"));
         }
 
 

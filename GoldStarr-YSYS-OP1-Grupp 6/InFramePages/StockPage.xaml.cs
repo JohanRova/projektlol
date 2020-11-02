@@ -36,6 +36,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             index = Merchandise1.SelectedIndex;
+            TempStores.MerchandiseIndexTemp = Merchandise1.SelectedIndex;
         }
 
         private void onClickStockEnter(object sender, RoutedEventArgs e)

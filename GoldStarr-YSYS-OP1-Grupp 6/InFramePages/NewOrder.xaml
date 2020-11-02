@@ -12,6 +12,14 @@
         <TextBlock x:Name="LOLE" HorizontalAlignment="Left" Margin="10,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="312" FontSize="24"/>
         <Frame x:Name="inNewOrderFramCustomer" Content="" Margin="10,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
         <Frame x:Name="inNewOrderFramStock" Content="" Margin="520,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
+        <TextBox x:Name="TextBlockMerchName" HorizontalAlignment="Left" Margin="1069,131,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="161" PlaceholderText="Merchandise item" IsReadOnly="True"/>
+        <Button x:Name="PopulateBoxes" Content="Autofill" Margin="1263,77,0,0" VerticalAlignment="Top" Click="onClickPopulateBoxes"/>
+        <TextBox x:Name="TextBlockSupplier" HorizontalAlignment="Left" Margin="1069,181,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="161" PlaceholderText="Supplier" IsReadOnly="True"/>
+        <TextBox x:Name="TextBlockStock" HorizontalAlignment="Left" Margin="1263,131,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="65" PlaceholderText="Stock" IsReadOnly="True"/>
+        <Rectangle HorizontalAlignment="Left" Height="1" Margin="1069,239,0,0" Stroke="Black" VerticalAlignment="Top" Width="340" Fill="Black"/>
+        <TextBox x:Name="TextBlockCustomerName" HorizontalAlignment="Left" Margin="1069,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="161" PlaceholderText="Customer name" IsReadOnly="True" Background="{x:Null}"/>
+        <TextBox x:Name="TextBlockCustomerAddress" HorizontalAlignment="Left" Margin="1069,318,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="161" PlaceholderText="Customer address" IsReadOnly="True" Background="{x:Null}"/>
+        <TextBox x:Name="TextBlockCustomerNumber" HorizontalAlignment="Left" Margin="1248,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="112" PlaceholderText="Phone number" IsReadOnly="True" Background="{x:Null}"/>
 
     </Grid>
 </Page>

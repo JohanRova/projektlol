@@ -28,6 +28,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
     {
         private Store store;
         private ObservableCollection<Customer> CustomerCollection;
+        private ObservableCollection<Merchandise> MerchandiseCollection;
 
         public NewOrder()
         {
@@ -38,8 +39,28 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             base.OnNavigatedTo(e);
             store = (Store)e.Parameter; // get parameter
             CustomerCollection = store.CustomerCollection;
+            MerchandiseCollection = store.MerchandiseCollection;
             inNewOrderFramCustomer.Navigate(typeof(CustomerList), store);
             inNewOrderFramStock.Navigate(typeof(StockPage), store);
+            
+
+        }
+
+        private void onClickPopulateBoxes(object sender, RoutedEventArgs e)
+        {
+            TextBlockMerchName.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Name;
+            TextBlockStock.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Stock.ToString();
+            TextBlockSupplier.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Supplier;
+            TextBlockCustomerName.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Name;
+            TextBlockCustomerAddress.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Address;
+            if(store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber != null)
+            {
+                TextBlockCustomerNumber.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber;
+            }
+            else if(store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber == null)
+            {
+                TextBlockCustomerNumber.Text = "";
+            }
             
         }
     }

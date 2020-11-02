@@ -11,18 +11,20 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
     {
         public string Name { get; set; }
         public string Address { get; set; }
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
-        public Customer(string name, string address)
-        {
-            Name = name;
-            Address = address;
-        }
-    public Customer(string name, string address, int phonenumber)
+        public Customer(string name, string address, string phonenumber = null)
         {
             Name = name;
             Address = address;
             PhoneNumber = phonenumber;
         }
+
+    /*public Customer(string name, string address, string phonenumber)
+        {
+            Name = name;
+            Address = address;
+            PhoneNumber = phonenumber;
+        }*/
     }
 }

@@ -32,7 +32,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            TempStores.CustomerIndexTemp = CustomersX.SelectedIndex;
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
