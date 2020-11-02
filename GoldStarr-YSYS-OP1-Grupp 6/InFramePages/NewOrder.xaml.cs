@@ -56,9 +56,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         private void onClickPopulateBoxes(object sender, RoutedEventArgs e)
         {
-            TextBlockMerchName.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Name;
-            TextBlockStock.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Stock.ToString();
-            TextBlockSupplier.Text = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Supplier;
+           
             TextBlockCustomerName.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Name;
             TextBlockCustomerAddress.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Address;
             if(store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber != null)
@@ -91,6 +89,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                         ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
                         TempStores.MerchandiseIndexTemp = -1;
                         OrderAmountBox.Text = string.Empty;
+                        TextBlockCustomerName.Text = string.Empty;
+                        TextBlockCustomerAddress.Text = string.Empty;
+                        TextBlockCustomerNumber.Text = string.Empty;
                     }
                     else
                     {
