@@ -30,23 +30,31 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public MainPage()
         {
             this.InitializeComponent();
-            
+            TempStores.ResetProperties();
         }
-        
+
+        public void HideInfo()
+        {
+            MainPageHeader.Visibility = Visibility.Collapsed;
+            MainPageInfo.Visibility = Visibility.Collapsed;
+        }
 
         private void ButtonStock_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(StockPage), store);
+            HideInfo();
         }
 
         private void ButtonMain_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(CustomerList), store);
+            HideInfo();
         }
 
         private void OrderButtom_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(NewOrder), store);
+            HideInfo();
         }
     }
 }

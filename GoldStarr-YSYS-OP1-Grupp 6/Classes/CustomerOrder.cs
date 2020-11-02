@@ -32,6 +32,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
         {
             OrderDateTime = DateTime.Now;
             OrderedProduct = merchandise;
+            OrderingCustomer = customer;
             Amount = amount;
         }
     }

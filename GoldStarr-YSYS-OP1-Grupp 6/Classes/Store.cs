@@ -13,6 +13,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public ObservableCollection<Merchandise> MerchandiseCollection;
         public ObservableCollection<Customer> CustomerCollection;
+        public ObservableCollection<CustomerOrder> customerOrders;
 
         public Store()
         {
@@ -21,6 +22,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             PopulatateMerchandiseCollection();
             PopulateCustomerList();
         }
+
 
         public void PopulatateMerchandiseCollection()
         {

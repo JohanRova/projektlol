@@ -30,6 +30,16 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         public StockPage()
         {
             this.InitializeComponent();
+            ChangeStockNoInput.Visibility = Visibility.Collapsed;
+            NoListInput.Visibility = Visibility.Collapsed;
+            TempStores.ResetProperties();
+
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
+            ChangeStockBox.Visibility = Visibility.Collapsed;
         }
 
         int index;
@@ -41,10 +51,29 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
 
         private void onClickStockEnter(object sender, RoutedEventArgs e)
         {
-            Merchandise merchtemp = MerchandiseList[index];
-            merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));
-            MerchandiseList.Insert(index, merchtemp);
-            MerchandiseList.RemoveAt(index + 1);
+            if (TempStores.MerchandiseIndexTemp >= 0)
+            {
+                if (!string.IsNullOrWhiteSpace(AmountBox.Text))
+                {
+                    Merchandise merchtemp = MerchandiseList[index];
+                    merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));
+                    MerchandiseList.Insert(index, merchtemp);
+                    MerchandiseList.RemoveAt(index + 1);
+                    ChangeStockNoInput.Visibility = Visibility.Collapsed;
+                    NoListInput.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    ChangeStockNoInput.Visibility = Visibility.Visible;
+                    NoListInput.Visibility = Visibility.Collapsed;
+
+                }
+
+            }
+            else
+            {
+                NoListInput.Visibility = Visibility.Visible;
+            }
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -52,6 +81,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             base.OnNavigatedTo(e);
             store = (Store)e.Parameter; // get parameter
             MerchandiseList = store.MerchandiseCollection;
+            ChangeStockBox.Visibility = Visibility.Visible;
         }
 
         public void HideExtras()

@@ -29,10 +29,17 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         private Store store;
         private ObservableCollection<Customer> CustomerCollection;
         private ObservableCollection<Merchandise> MerchandiseCollection;
-
+        private ObservableCollection<CustomerOrder> customerOrders;
+        public void ClearTextBox()
+        {
+            OrderAmountBox.Text = string.Empty;
+        }
         public NewOrder()
         {
             this.InitializeComponent();
+            customerOrders = new ObservableCollection<CustomerOrder>();
+            TempStores.ResetProperties();
+
         }
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -42,8 +49,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MerchandiseCollection = store.MerchandiseCollection;
             inNewOrderFramCustomer.Navigate(typeof(CustomerList), store);
             inNewOrderFramStock.Navigate(typeof(StockPage), store);
-            
-
+            NotEnoughInStockPrompt.Visibility = Visibility.Collapsed;
+            NoAmountEnteredPrompt.Visibility = Visibility.Collapsed;
+            ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
         }
 
         private void onClickPopulateBoxes(object sender, RoutedEventArgs e)
@@ -62,6 +70,45 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 TextBlockCustomerNumber.Text = "";
             }
             
+        }
+
+        private void MakeOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            string tempAmountBox = OrderAmountBox.Text;
+            if ((TempStores.MerchandiseIndexTemp >= 0) && (TempStores.CustomerIndexTemp >= 0))
+            {
+                if (!string.IsNullOrWhiteSpace(tempAmountBox))
+                {
+                    CustomerOrder tempObj = CustomerOrder.CreateOrder(store.CustomerCollection[TempStores.CustomerIndexTemp], store.MerchandiseCollection[TempStores.MerchandiseIndexTemp], Int32.Parse(OrderAmountBox.Text));
+                    if (tempObj != null)
+                    {
+                        customerOrders.Add(tempObj);
+                        Merchandise merchtemp = MerchandiseCollection[TempStores.MerchandiseIndexTemp];
+                        MerchandiseCollection.Insert(TempStores.MerchandiseIndexTemp, merchtemp);
+                        MerchandiseCollection.RemoveAt(TempStores.MerchandiseIndexTemp + 1);
+                        NotEnoughInStockPrompt.Visibility = Visibility.Collapsed;
+                        NoAmountEnteredPrompt.Visibility = Visibility.Collapsed;
+                        ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
+                        TempStores.MerchandiseIndexTemp = -1;
+                        OrderAmountBox.Text = string.Empty;
+                    }
+                    else
+                    {
+                        NotEnoughInStockPrompt.Visibility = Visibility.Visible;
+                        ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
+
+                    }
+                }
+                else
+                {
+                    NoAmountEnteredPrompt.Visibility = Visibility.Visible;
+                    ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
+                }
+            }
+            else
+            {
+                ListViewSelectionPrompt.Visibility = Visibility.Visible;
+            }
         }
     }
 }

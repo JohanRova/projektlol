@@ -20,6 +20,12 @@
         <TextBox x:Name="TextBlockCustomerName" HorizontalAlignment="Left" Margin="1069,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="161" PlaceholderText="Customer name" IsReadOnly="True" Background="{x:Null}"/>
         <TextBox x:Name="TextBlockCustomerAddress" HorizontalAlignment="Left" Margin="1069,318,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="161" PlaceholderText="Customer address" IsReadOnly="True" Background="{x:Null}"/>
         <TextBox x:Name="TextBlockCustomerNumber" HorizontalAlignment="Left" Margin="1248,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="112" PlaceholderText="Phone number" IsReadOnly="True" Background="{x:Null}"/>
+        <TextBox x:Name="OrderAmountBox" HorizontalAlignment="Left" Margin="1069,420,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" PlaceholderText="Amount to order"/>
+        <Rectangle HorizontalAlignment="Left" Height="1" Margin="1069,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="340" Fill="Black"/>
+        <Button x:Name="MakeOrderButton" Content="Order" Margin="1296,421,0,0" VerticalAlignment="Top" Click="MakeOrderButton_Click"/>
+        <TextBlock x:Name="NotEnoughInStockPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Not enough items in stock to make this order!" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="NoAmountEnteredPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Please enter an amount." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="ListViewSelectionPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Please make a selection from both lists." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
 
     </Grid>
 </Page>

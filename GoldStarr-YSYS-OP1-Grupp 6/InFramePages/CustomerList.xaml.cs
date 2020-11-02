@@ -29,6 +29,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public CustomerList()
         {
             this.InitializeComponent();
+            TempStores.ResetProperties();
+
         }
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
