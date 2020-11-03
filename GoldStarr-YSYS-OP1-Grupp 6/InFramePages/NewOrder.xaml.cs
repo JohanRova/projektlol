@@ -52,22 +52,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             NotEnoughInStockPrompt.Visibility = Visibility.Collapsed;
             NoAmountEnteredPrompt.Visibility = Visibility.Collapsed;
             ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
-        }
-
-        private void onClickPopulateBoxes(object sender, RoutedEventArgs e)
-        {
-           
-            TextBlockCustomerName.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Name;
-            TextBlockCustomerAddress.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].Address;
-            if(store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber != null)
-            {
-                TextBlockCustomerNumber.Text = store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber;
-            }
-            else if(store.CustomerCollection[TempStores.CustomerIndexTemp].PhoneNumber == null)
-            {
-                TextBlockCustomerNumber.Text = "";
-            }
-            
+            OrderMadePrompt.Visibility = Visibility.Collapsed;
         }
 
         private void MakeOrderButton_Click(object sender, RoutedEventArgs e)
@@ -89,9 +74,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                         ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
                         TempStores.MerchandiseIndexTemp = -1;
                         OrderAmountBox.Text = string.Empty;
-                        TextBlockCustomerName.Text = string.Empty;
-                        TextBlockCustomerAddress.Text = string.Empty;
-                        TextBlockCustomerNumber.Text = string.Empty;
+                        OrderMadePrompt.Visibility = Visibility.Visible;
                     }
                     else
                     {

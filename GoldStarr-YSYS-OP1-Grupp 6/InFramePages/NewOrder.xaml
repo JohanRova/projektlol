@@ -12,17 +12,15 @@
         <TextBlock x:Name="LOLE" HorizontalAlignment="Left" Margin="10,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="312" FontSize="24"/>
         <Frame x:Name="inNewOrderFramCustomer" Content="" Margin="10,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
         <Frame x:Name="inNewOrderFramStock" Content="" Margin="520,47,0,0" HorizontalAlignment="Left" Width="510" Height="1033" VerticalAlignment="Top"/>
-        <Button x:Name="PopulateBoxes" Content="Get address" Margin="1257,319,0,0" VerticalAlignment="Top" Click="onClickPopulateBoxes"/>
-        <Rectangle HorizontalAlignment="Left" Height="1" Margin="1069,239,0,0" Stroke="Black" VerticalAlignment="Top" Width="340" Fill="Black"/>
-        <TextBox x:Name="TextBlockCustomerName" HorizontalAlignment="Left" Margin="1069,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="161" PlaceholderText="Customer name" IsReadOnly="True" Background="{x:Null}"/>
-        <TextBox x:Name="TextBlockCustomerAddress" HorizontalAlignment="Left" Margin="1069,318,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="161" PlaceholderText="Customer address" IsReadOnly="True" Background="{x:Null}"/>
-        <TextBox x:Name="TextBlockCustomerNumber" HorizontalAlignment="Left" Margin="1248,265,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="112" PlaceholderText="Phone number" IsReadOnly="True" Background="{x:Null}"/>
-        <TextBox x:Name="OrderAmountBox" HorizontalAlignment="Left" Margin="1069,437,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" PlaceholderText="Amount to order"/>
-        <Rectangle HorizontalAlignment="Left" Height="1" Margin="1069,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="340" Fill="Black"/>
-        <Button x:Name="MakeOrderButton" Content="Order" Margin="1294,437,0,0" VerticalAlignment="Top" Click="MakeOrderButton_Click"/>
-        <TextBlock x:Name="NotEnoughInStockPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Not enough items in stock to make this order!" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
-        <TextBlock x:Name="NoAmountEnteredPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Please enter an amount." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
-        <TextBlock x:Name="ListViewSelectionPrompt" HorizontalAlignment="Left" Margin="1069,475,0,0" Text="Please make a selection from both lists." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBox x:Name="OrderAmountBox" HorizontalAlignment="Left" Margin="1035,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" PlaceholderText="Amount to order"/>
+        <Button x:Name="MakeOrderButton" Content="Order" Margin="1260,176,0,0" VerticalAlignment="Top" Click="MakeOrderButton_Click"/>
+        <TextBlock x:Name="NotEnoughInStockPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Not enough items in stock to make this order!" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="NoAmountEnteredPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Please enter an amount." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="ListViewSelectionPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Please make a selection from both lists." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock HorizontalAlignment="Left" Margin="1030,47,0,0" Text="To make a new order please select a customer and an item from the lists. Enter the amount to order to the customer, then press order. " TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="284" FocusVisualSecondaryBrush="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Left" Height="114" Margin="1027,47,0,0" Stroke="Black" VerticalAlignment="Top" Width="297"/>
+        <TextBlock x:Name="OrderMadePrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Order made!" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FF00FF0C"/>
+
 
     </Grid>
 </Page>

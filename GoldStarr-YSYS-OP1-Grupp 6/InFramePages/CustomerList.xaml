@@ -13,13 +13,14 @@
 
 
         <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="List of customers" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="CustomersX" Width="500" Height="997" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" IsItemClickEnabled="True" SelectionChanged="ListView_SelectionChanged">
+        <ListView x:Name="CustomersX" Width="658" Height="997" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" IsItemClickEnabled="True" SelectionChanged="ListView_SelectionChanged">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel x:Name="StackList" Orientation="Horizontal">
 
                         <TextBlock Text="{Binding Name}" Margin="5, 10, 0, 0" Width="125"/>
+                        <TextBlock Text="{Binding Address}" Margin="5, 10, 0, 0" Width="250"/>
 
                     </StackPanel>
                 </DataTemplate>
