@@ -26,27 +26,25 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public void PopulatateMerchandiseCollection()
         {
-            MerchandiseCollection.Add(new Merchandise("Red Bull", "Red Bull Österrike", 15));
-            MerchandiseCollection.Add(new Merchandise("Coca cola", "Spendrups", 12));
-            MerchandiseCollection.Add(new Merchandise("Apelsinejuice", "Ica", 13));
-            MerchandiseCollection.Add(new Merchandise("Citronjuice", "Ica", 5));
+            MerchandiseCollection.Add(new Merchandise("Marabou Schweizernöt", "Marabou", 15));
+            MerchandiseCollection.Add(new Merchandise("Coca Cola", "Spendrups", 12));
+            MerchandiseCollection.Add(new Merchandise("Apelsinejuice", "Festis", 13));
+            MerchandiseCollection.Add(new Merchandise("Citronjuice", "Rynkeby", 5));
             MerchandiseCollection.Add(new Merchandise("Skånerost", "Zoega's", 5));
             MerchandiseCollection.Add(new Merchandise("Hallonsaft", "BOB", 15));
-            MerchandiseCollection.Add(new Merchandise("Aloe Vera", "Nobe", 145));
-            MerchandiseCollection.Add(new Merchandise("Fanta", "Coke company", 125));
+            MerchandiseCollection.Add(new Merchandise("Fanta", "Coka Cola Company", 125));
         }
 
         public void PopulateCustomerList()
         {
-            CustomerCollection.Add(new Customer("Abdi Andersson", "Fosievägen, Malmö"));
-            CustomerCollection.Add(new Customer("Thomas Löhr", "Regementsgatan 31, Malmö", "0734958965"));
-            CustomerCollection.Add(new Customer("Jony Kiiskinen", "Malmövägen, Lund", "0733456585"));
-            CustomerCollection.Add(new Customer("Fisnik Haliti", "Industrigatan, Malmö", "0736987456"));
-            CustomerCollection.Add(new Customer("Johan Rova", "Perstorp"));
-            CustomerCollection.Add(new Customer("Elin Ortega", "Åkarp"));
-            CustomerCollection.Add(new Customer("Christian Elm", "Mariedalsvägen 15", "0733456145"));
-            CustomerCollection.Add(new Customer("Carl Malmström", "Värnhem"));
-            CustomerCollection.Add(new Customer("Armin Ljalic", "Lundavägen 72", "0721456125"));
+            CustomerCollection.Add(new Customer("Abdi Anderson", "Limhamnsvägen 27, Malmö"));
+            CustomerCollection.Add(new Customer("Thomas Shelby", "Regementsgatan 31, Malmö", "0734958965"));
+            CustomerCollection.Add(new Customer("Fallon Carrington", "Malmövägen 15, Lund", "0733456585"));
+            CustomerCollection.Add(new Customer("Rick Grimes", "Industrigatan 32, Malmö", "0736987456"));
+            CustomerCollection.Add(new Customer("Meredith Grey", "Alnarpsvägen 40, Åkarp"));
+            CustomerCollection.Add(new Customer("Richard Hendricks", "Mariedalsvägen 15, Malmö", "0733456145"));
+            CustomerCollection.Add(new Customer("Arthur Shelby", "Lommavägen 13, Oxie"));
+            
         }
 
 
