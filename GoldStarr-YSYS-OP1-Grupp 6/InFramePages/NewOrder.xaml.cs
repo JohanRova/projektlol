@@ -16,6 +16,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.Threading;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,17 +31,39 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         private ObservableCollection<Customer> CustomerCollection;
         private ObservableCollection<Merchandise> MerchandiseCollection;
         private ObservableCollection<CustomerOrder> customerOrders;
+
+
         public void ClearTextBox()
         {
             OrderAmountBox.Text = string.Empty;
+            
         }
+
         public NewOrder()
         {
             this.InitializeComponent();
             customerOrders = new ObservableCollection<CustomerOrder>();
             TempStores.ResetProperties();
-
+            OrderMadePopUp.IsOpen = false;
         }
+        DispatcherTimer dispatcherTimer;
+
+        public void TimerSetUp()
+        {
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += dispatcherTimerEventFire;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 5);
+            dispatcherTimer.Start();
+        }
+
+
+        void dispatcherTimerEventFire(object sender, object e)
+        {
+            OrderMadePopUp.IsOpen = false;
+            dispatcherTimer.Stop();
+        }
+
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -52,7 +75,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             NotEnoughInStockPrompt.Visibility = Visibility.Collapsed;
             NoAmountEnteredPrompt.Visibility = Visibility.Collapsed;
             ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
-            OrderMadePrompt.Visibility = Visibility.Collapsed;
+            //OrderMadePrompt.Visibility = Visibility.Collapsed;
         }
 
         private void MakeOrderButton_Click(object sender, RoutedEventArgs e)
@@ -74,7 +97,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                         ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
                         TempStores.MerchandiseIndexTemp = -1;
                         OrderAmountBox.Text = string.Empty;
-                        OrderMadePrompt.Visibility = Visibility.Visible;
+                        //OrderMadePrompt.Visibility = Visibility.Visible;
+                        OrderMadePopUp.IsOpen = true;
+                        TimerSetUp();
                     }
                     else
                     {
