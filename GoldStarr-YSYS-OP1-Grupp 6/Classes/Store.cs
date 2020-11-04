@@ -24,6 +24,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
 
 
+
         public void PopulatateMerchandiseCollection()
         {
             MerchandiseCollection.Add(new Merchandise("Marabou Schweizernöt", "Marabou", 15));
@@ -32,7 +33,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MerchandiseCollection.Add(new Merchandise("Citronjuice", "Rynkeby", 5));
             MerchandiseCollection.Add(new Merchandise("Skånerost", "Zoega's", 5));
             MerchandiseCollection.Add(new Merchandise("Hallonsaft", "BOB", 15));
-            MerchandiseCollection.Add(new Merchandise("Fanta", "Coka Cola Company", 125));
+            MerchandiseCollection.Add(new Merchandise("Fanta", "Coca Cola Company", 125));
         }
 
         public void PopulateCustomerList()
