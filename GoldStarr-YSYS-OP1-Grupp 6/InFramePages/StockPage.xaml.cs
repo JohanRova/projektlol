@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -92,5 +93,13 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             EnterButton.Visibility = Visibility.Collapsed;
         }
 
+        private void AmountBox_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if(e.Key == VirtualKey.Enter)
+            {
+                onClickStockEnter(sender, e);
+                AmountBox.Text = string.Empty;
+            }
+        }
     }
 }

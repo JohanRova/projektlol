@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Storage;
+using Windows.UI.Xaml;
 
 namespace GoldStarr_YSYS_OP1_Grupp_6
 {
@@ -15,7 +17,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public ObservableCollection<Merchandise> MerchandiseCollection;
         public ObservableCollection<Customer> CustomerCollection;
         //public ObservableCollection<CustomerOrder> customerOrders;
-
+        private bool SaveFilesFound;
+        private string errorMessage;
 
         public Store()
         {
@@ -23,6 +26,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             CustomerCollection = new ObservableCollection<Customer>();
             //PopulatateMerchandiseCollection();
             //PopulateCustomerList();
+            AutoSaveToFileTimer();
 
         }
 
@@ -51,6 +55,20 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             
         }
 
+        private void AutoSaveToFileTimer()
+        {
+            DispatcherTimer dispatcherTimer;
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += AutosaveToFile;
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Start();
+        }
+
+        void AutosaveToFile(object sender, object e)
+        {
+            SaveCustomersToFile();
+            SaveMerchandiseStockToFile();
+        }
         public async void SaveMerchandiseStockToFile()
         {
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
@@ -72,26 +90,29 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
         public async void LoadMerchandiseStockToFile()
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.GetFileAsync("MerchandiseSaveFile.sav");
-            string text;
-            var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            ulong size = stream.Size;
-            using (var inputStream = stream.GetInputStreamAt(0))
+            if (SaveFilesFound)
             {
-                using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile storageFile = await storageFolder.GetFileAsync("MerchandiseSaveFile.sav");
+                string text;
+                var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                ulong size = stream.Size;
+                using (var inputStream = stream.GetInputStreamAt(0))
                 {
-                    uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
-                    text = dataReader.ReadString(numBytesLoaded);
+                    using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                    {
+                        uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
+                        text = dataReader.ReadString(numBytesLoaded);
+                    }
                 }
-            }
-            text = text.Replace("\n", string.Empty);
-            string[] words = text.Split('%');
-            for (int i = 0; i < words.Length - 1; i += 3)
-            {
+                text = text.Replace("\n", string.Empty);
+                string[] words = text.Split('%');
+                for (int i = 0; i < words.Length - 1; i += 3)
+                {
 
-                Merchandise tempMerch = new Merchandise(words[i], words[i + 1], Int32.Parse(words[i + 2]));
-                MerchandiseCollection.Add(tempMerch);
+                    Merchandise tempMerch = new Merchandise(words[i], words[i + 1], Int32.Parse(words[i + 2]));
+                    MerchandiseCollection.Add(tempMerch);
+                }
             }
         }
         public async void SaveCustomersToFile()
@@ -115,39 +136,48 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
         public async void LoadCustomersFromFile()
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
-            string text;
-            var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            ulong size = stream.Size;
-            using (var inputStream = stream.GetInputStreamAt(0))
+            if (SaveFilesFound)
             {
-                using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
+                string text;
+                var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                ulong size = stream.Size;
+                using (var inputStream = stream.GetInputStreamAt(0))
                 {
-                    uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
-                    text = dataReader.ReadString(numBytesLoaded);
+                    using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                    {
+                        uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
+                        text = dataReader.ReadString(numBytesLoaded);
+                    }
+                }
+                text = text.Replace("\n", string.Empty);
+                string[] words = text.Split('%');
+                for (int i = 0; i < words.Length - 1; i += 3)
+                {
+
+                    Customer tempCustomer = new Customer(words[i], words[i + 1], words[i + 2]);
+                    CustomerCollection.Add(tempCustomer);
                 }
             }
-            /*text = text.Replace("\n", string.Empty);
-            string[] words = text.Split('%');
-            for (int i = 0; i < words.Length - 1; i += 3)
-            {
-
-                Customer tempCustomer = new Customer(words[i], words[i + 1], words[i + 2]);
-                CustomerCollection.Add(tempCustomer);
-            }*/
-            ParseLoadData(text);
         }
-        private void ParseLoadData(string textinput)
+        public async void TryFindingSaves()
         {
-            textinput = textinput.Replace("\n", string.Empty);
-            string[] words = textinput.Split('%');
-            for (int i = 0; i < words.Length - 1; i += 3)
+            try
             {
-
-                Customer tempItem = new Customer(words[i], words[i + 1], words[i + 2]);
-                CustomerCollection.Add(tempItem);
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
+                SaveFilesFound = true;
+                TempStores.SaveFilesFound = true;
             }
+            catch(System.IO.FileNotFoundException e)
+            {
+                errorMessage = e.Message;
+            }
+        }
+        public string GetErrors()
+        {
+            return errorMessage;
         }
 
     }

@@ -27,7 +27,7 @@
         </ListView>
         <Grid x:Name="ChangeStockBox" Margin="515,73,0,0" HorizontalAlignment="Left" Width="655" Height="896" VerticalAlignment="Top">
             <TextBlock x:Name="StockChangeText" HorizontalAlignment="Left" Margin="10,10,0,0" Text="Change in stock" TextWrapping="Wrap" VerticalAlignment="Top" Height="39" Width="248" FontSize="24"/>
-            <TextBox x:Name="AmountBox" HorizontalAlignment="Left" Margin="10,47,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" AcceptsReturn="True" PlaceholderText="Amount" Width="100"/>
+            <TextBox x:Name="AmountBox" HorizontalAlignment="Left" Margin="10,47,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" PlaceholderText="Amount" Width="100" KeyDown="AmountBox_KeyDown"/>
             <TextBlock x:Name="ChangeStockText" HorizontalAlignment="Left" Margin="270,11,0,0" Text="When a merchandise delivery comes in, select the item in the list and enter the amount that was delivered to the warehouse. " TextWrapping="Wrap" VerticalAlignment="Top" Height="86" Width="241"/>
             <Button x:Name="EnterButton" Content="Enter" Margin="29,102,0,0" VerticalAlignment="Top" Click="onClickStockEnter"/>
         </Grid>

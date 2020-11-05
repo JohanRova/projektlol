@@ -10,6 +10,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
     {
         public static int CustomerIndexTemp { get; set; }
         public static int MerchandiseIndexTemp { get; set; }
+        public static bool SaveFilesFound { get; set; }
         public static void ResetProperties()
         {
             CustomerIndexTemp = -1;
