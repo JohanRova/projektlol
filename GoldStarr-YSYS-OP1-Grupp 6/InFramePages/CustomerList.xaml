@@ -9,11 +9,13 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <ListView SelectionChanged="ListView_SelectionChanged"/>
+        <ListView SelectionChanged="ListView_SelectionChanged">
+
+        </ListView>
 
 
-        <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="List of customers" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" Foreground="Black" FontWeight="Bold"/>
-        <ListView x:Name="CustomersX" Width="658" Height="997" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" IsItemClickEnabled="True" SelectionChanged="ListView_SelectionChanged">
+        <TextBlock HorizontalAlignment="Left" Margin="10,20,0,0" Text="List of customers" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Foreground="Black" FontWeight="Normal"/>
+        <ListView x:Name="CustomerListListView" Width="649" Height="927" HorizontalAlignment="Left" Margin="10,73,0,0" VerticalAlignment="Top" IsItemClickEnabled="True" SelectionChanged="ListView_SelectionChanged">
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -26,7 +28,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <Button x:Name="AddNewCustomerButton" Content="Add new customer" Margin="659,73,0,0" VerticalAlignment="Top" Width="170" Click="AddNewCustomerButton_Click"/>
 
     </Grid>
 </Page>

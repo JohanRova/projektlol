@@ -19,7 +19,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
-            PopulatateMerchandiseCollection();
+            //PopulatateMerchandiseCollection();
             PopulateCustomerList();
         }
 
