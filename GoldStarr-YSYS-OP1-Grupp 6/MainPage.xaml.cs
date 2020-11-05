@@ -66,7 +66,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             StorageFile storageFile = await storageFolder.CreateFileAsync("sample.txt", CreationCollisionOption.OpenIfExists);
             await Windows.Storage.FileIO.WriteTextAsync(storageFile, );*/
             StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.CreateFileAsync("sample.txt", CreationCollisionOption.OpenIfExists);
+            StorageFile storageFile = await storageFolder.CreateFileAsync("MerchandiseSaveFile.sav", CreationCollisionOption.OpenIfExists);
             var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
             using (var outputStream = stream.GetOutputStreamAt(0))
             {
@@ -74,7 +74,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 {
                     for (int i = 0; i < store.MerchandiseCollection.Count; i++)
                     {
-                        dataWriter.WriteString($"{store.MerchandiseCollection[i].ToString()}");
+                        dataWriter.WriteString($"{store.MerchandiseCollection[i].ToString()}\n");
                         await dataWriter.StoreAsync();
                         await outputStream.FlushAsync();
                     }
@@ -103,6 +103,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                     text = dataReader.ReadString(numBytesLoaded);
                 }
             }
+            text = text.Replace("\n", "");
             string[] words = text.Split(',');
             for (int i = 0; i < words.Length-1; i+=3)
             {
