@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.Storage;
 
 namespace GoldStarr_YSYS_OP1_Grupp_6
 {
@@ -13,14 +14,16 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public ObservableCollection<Merchandise> MerchandiseCollection;
         public ObservableCollection<Customer> CustomerCollection;
-        public ObservableCollection<CustomerOrder> customerOrders;
+        //public ObservableCollection<CustomerOrder> customerOrders;
+
 
         public Store()
         {
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
-            PopulatateMerchandiseCollection();
-            PopulateCustomerList();
+            //PopulatateMerchandiseCollection();
+            //PopulateCustomerList();
+
         }
 
 
@@ -48,6 +51,104 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             
         }
 
+        public async void SaveMerchandiseStockToFile()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.CreateFileAsync("MerchandiseSaveFile.sav", CreationCollisionOption.OpenIfExists);
+            var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
+            using (var outputStream = stream.GetOutputStreamAt(0))
+            {
+                using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
+                {
+                    for (int i = 0; i < MerchandiseCollection.Count; i++)
+                    {
+                        dataWriter.WriteString($"{MerchandiseCollection[i].ToString()}\n");
+                        await dataWriter.StoreAsync();
+                        await outputStream.FlushAsync();
+                    }
+                }
+            }
+            stream.Dispose();
+        }
+        public async void LoadMerchandiseStockToFile()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.GetFileAsync("MerchandiseSaveFile.sav");
+            string text;
+            var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            ulong size = stream.Size;
+            using (var inputStream = stream.GetInputStreamAt(0))
+            {
+                using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                {
+                    uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
+                    text = dataReader.ReadString(numBytesLoaded);
+                }
+            }
+            text = text.Replace("\n", string.Empty);
+            string[] words = text.Split('%');
+            for (int i = 0; i < words.Length - 1; i += 3)
+            {
+
+                Merchandise tempMerch = new Merchandise(words[i], words[i + 1], Int32.Parse(words[i + 2]));
+                MerchandiseCollection.Add(tempMerch);
+            }
+        }
+        public async void SaveCustomersToFile()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.CreateFileAsync("CustomerSaveFile.sav", CreationCollisionOption.OpenIfExists);
+            var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
+            using (var outputStream = stream.GetOutputStreamAt(0))
+            {
+                using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
+                {
+                    for (int i = 0; i < CustomerCollection.Count; i++)
+                    {
+                        dataWriter.WriteString($"{CustomerCollection[i].ToString()}\n");
+                        await dataWriter.StoreAsync();
+                        await outputStream.FlushAsync();
+                    }
+                }
+            }
+            stream.Dispose();
+        }
+        public async void LoadCustomersFromFile()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
+            string text;
+            var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+            ulong size = stream.Size;
+            using (var inputStream = stream.GetInputStreamAt(0))
+            {
+                using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                {
+                    uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
+                    text = dataReader.ReadString(numBytesLoaded);
+                }
+            }
+            /*text = text.Replace("\n", string.Empty);
+            string[] words = text.Split('%');
+            for (int i = 0; i < words.Length - 1; i += 3)
+            {
+
+                Customer tempCustomer = new Customer(words[i], words[i + 1], words[i + 2]);
+                CustomerCollection.Add(tempCustomer);
+            }*/
+            ParseLoadData(text);
+        }
+        private void ParseLoadData(string textinput)
+        {
+            textinput = textinput.Replace("\n", string.Empty);
+            string[] words = textinput.Split('%');
+            for (int i = 0; i < words.Length - 1; i += 3)
+            {
+
+                Customer tempItem = new Customer(words[i], words[i + 1], words[i + 2]);
+                CustomerCollection.Add(tempItem);
+            }
+        }
 
     }
 }

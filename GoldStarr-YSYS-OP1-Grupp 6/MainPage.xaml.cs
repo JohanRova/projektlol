@@ -32,6 +32,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             this.InitializeComponent();
             TempStores.ResetProperties();
+            //store.SaveMerchandiseStockToFile();
+            //store.LoadMerchandiseStockToFile();
+            //store.LoadCustomersFromFile();
         }
 
         public void HideInfo()
@@ -58,60 +61,18 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             HideInfo();
         }
 
-        private async void SaveButton_Click(object sender, RoutedEventArgs e)
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            //Koden under funkar för att skapa en fil som heter "sample.txt", om filen redan finns så bara öppnas den.
-            //med away fileio så kan man skriva in text, denna ska skrivas efter "storageFile, ...)"
-            /*StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.CreateFileAsync("sample.txt", CreationCollisionOption.OpenIfExists);
-            await Windows.Storage.FileIO.WriteTextAsync(storageFile, );*/
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.CreateFileAsync("MerchandiseSaveFile.sav", CreationCollisionOption.OpenIfExists);
-            var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
-            using (var outputStream = stream.GetOutputStreamAt(0))
-            {
-                using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
-                {
-                    for (int i = 0; i < store.MerchandiseCollection.Count; i++)
-                    {
-                        dataWriter.WriteString($"{store.MerchandiseCollection[i].ToString()}\n");
-                        await dataWriter.StoreAsync();
-                        await outputStream.FlushAsync();
-                    }
-                }
-            }
-            stream.Dispose();
+
+            store.SaveCustomersToFile();
+            store.SaveMerchandiseStockToFile();
 
         }
 
-        List<string> newList = new List<string>();
-        string[] listarray = new string[1];
-        string text;
-
         private async void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-            StorageFile storageFile = await storageFolder.GetFileAsync("sample.txt");
-            //string text = await FileIO.ReadTextAsync(storageFile);
-            var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
-            ulong size = stream.Size;
-            using (var inputStream = stream.GetInputStreamAt(0))
-            {
-                using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
-                {
-                    uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
-                    text = dataReader.ReadString(numBytesLoaded);
-                }
-            }
-            text = text.Replace("\n", "");
-            string[] words = text.Split(',');
-            for (int i = 0; i < words.Length-1; i+=3)
-            {
-
-                Merchandise tempMerch = new Merchandise(words[i], words[i+1], Int32.Parse(words[i+2]));
-                store.MerchandiseCollection.Add(tempMerch);
-            }
-           
+            store.LoadCustomersFromFile();
+            store.LoadMerchandiseStockToFile();
         }
     }
 }
