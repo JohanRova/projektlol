@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.System;
@@ -34,7 +33,6 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             this.InitializeComponent();
             ChangeStockNoInput.Visibility = Visibility.Collapsed;
             NoListInput.Visibility = Visibility.Collapsed;
-            WrongInputNotANumber.Visibility = Visibility.Collapsed;
             TempStores.ResetProperties();
 
         }
@@ -48,8 +46,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         int index;
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            index = MerchandiseListListView.SelectedIndex;
-            TempStores.MerchandiseIndexTemp = MerchandiseListListView.SelectedIndex;
+            index = Merchandise1.SelectedIndex;
+            TempStores.MerchandiseIndexTemp = Merchandise1.SelectedIndex;
         }
 
         private void onClickStockEnter(object sender, RoutedEventArgs e)
@@ -60,12 +58,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
                 {
                     Merchandise merchtemp = MerchandiseList[index];
                     merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));
-                 
                     MerchandiseList.Insert(index, merchtemp);
                     MerchandiseList.RemoveAt(index + 1);
                     ChangeStockNoInput.Visibility = Visibility.Collapsed;
                     NoListInput.Visibility = Visibility.Collapsed;
-                    AmountBox.Text = string.Empty;
                 }
                 else
                 {
