@@ -12,7 +12,7 @@
 
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" Text="Stock" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="30" Foreground="Black" FontWeight="Normal"/>
-        <ListView x:Name="MerchandiseListListView" ItemsSource="{x:Bind MerchandiseList, Mode=TwoWay}" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,0" HorizontalAlignment="Left" IsItemClickEnabled="True" Height="1007" VerticalAlignment="Top">
+        <ListView x:Name="MerchandiseListListView" ItemsSource="{x:Bind MerchandiseList, Mode=TwoWay}" Width="500" SelectionChanged="ListView_SelectionChanged" Margin="10,73,0,77" HorizontalAlignment="Left" IsItemClickEnabled="True">
 
             <ListView.ItemTemplate>
                 <DataTemplate>

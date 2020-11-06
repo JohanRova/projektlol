@@ -97,5 +97,63 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             EnterButton.Visibility = Visibility.Collapsed;
         }
 
+        private async void AddNewProductButton_Click(object sender, RoutedEventArgs e)
+        {
+            var tempShowAddDialogAsync = await ShowAddDialogAsync();
+            if (tempShowAddDialogAsync != null && tempShowAddDialogAsync.Stock != 0)
+            {
+                MerchandiseList.Add(tempShowAddDialogAsync);
+                MerchandiseListListView.ItemsSource = MerchandiseList;
+            }
+            else
+            {
+                WrongInputNotANumber.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        public static async Task<Merchandise> ShowAddDialogAsync()
+        {
+            var stackpanel = new StackPanel();
+
+            var ProductLabel = new TextBlock();
+            ProductLabel.Text = "Name of product: ";
+            var ProductName = new TextBox();
+            stackpanel.Children.Add(ProductLabel);
+            stackpanel.Children.Add(ProductName);
+
+            var SupplierTextBlock = new TextBlock();
+            SupplierTextBlock.Text = "Supplier: ";
+            var SupplierTextBox = new TextBox();
+            stackpanel.Children.Add(SupplierTextBlock);
+            stackpanel.Children.Add(SupplierTextBox);
+
+            var QuantityTextBlock = new TextBlock();
+            QuantityTextBlock.Text = "Quantity ";
+            var QuantityTextBox = new TextBox();
+            stackpanel.Children.Add(QuantityTextBlock);
+            stackpanel.Children.Add(QuantityTextBox);
+
+            var dialog = new ContentDialog
+            {
+                Content = stackpanel,
+                Title = "Add new product: ",
+                IsSecondaryButtonEnabled = true,
+                PrimaryButtonText = "Ok",
+                SecondaryButtonText = "Cancel",
+
+            };
+            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+            {
+                int tempstock;
+                int.TryParse(QuantityTextBox.Text, out tempstock);
+                return new Merchandise(ProductName.Text, SupplierTextBox.Text, tempstock);
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }
