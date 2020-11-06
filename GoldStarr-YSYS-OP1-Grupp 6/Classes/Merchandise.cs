@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
 {
-    class Merchandise
+    public class Merchandise
     {
         public string Name { get; set; }
         public string Supplier { get; set; }
