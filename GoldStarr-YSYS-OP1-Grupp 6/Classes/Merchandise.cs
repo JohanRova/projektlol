@@ -14,7 +14,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
 
         public override string ToString()
         {
-            return $"{Name},{Supplier},{Stock},";
+            return $"{Name}%{Supplier}%{Stock}%";
         }
         public Merchandise(string name, string supplier, int stock)
         {

@@ -8,6 +8,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -96,66 +97,5 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             EnterButton.Visibility = Visibility.Collapsed;
         }
 
-        private async void AddNewProductButton_Click(object sender, RoutedEventArgs e)
-        {
-            var tempShowAddDialogAsync = await ShowAddDialogAsync();
-            if (tempShowAddDialogAsync != null && tempShowAddDialogAsync.Stock != 0)
-            {
-                MerchandiseList.Add(tempShowAddDialogAsync);
-                MerchandiseListListView.ItemsSource = MerchandiseList;
-            }
-            else
-            {
-                WrongInputNotANumber.Visibility = Visibility.Visible;
-            }
-           
-        }
-        public static async Task<Merchandise> ShowAddDialogAsync()
-        {
-            var stackpanel = new StackPanel();
-
-            var productLabel = new TextBlock();
-            productLabel.Text = "Name of product";
-            var productTextBox = new TextBox();
-            stackpanel.Children.Add(productLabel);
-            stackpanel.Children.Add(productTextBox);
-
-            var supplierLabel = new TextBlock();
-            supplierLabel.Text = "Name of supplier";
-            var supplierTextBox = new TextBox();
-            stackpanel.Children.Add(supplierLabel);
-            stackpanel.Children.Add(supplierTextBox);
-
-            var amountLabel = new TextBlock();
-            amountLabel.Text = "Quantity";
-            var amountTextBox = new TextBox();
-            stackpanel.Children.Add(amountLabel);
-            stackpanel.Children.Add(amountTextBox);
-
-            var dialog = new ContentDialog
-            {
-                Content = stackpanel,
-                Title = "Add new product: ",
-                IsSecondaryButtonEnabled = true,
-                PrimaryButtonText = "Ok",
-                SecondaryButtonText = "Cancel",
-
-            };
-            if (await dialog.ShowAsync() == ContentDialogResult.Primary)
-            {
-                int tempQuantity;
-                if(int.TryParse(amountTextBox.Text, out tempQuantity))
-                {
-
-                }
-                return new Merchandise(productTextBox.Text, supplierTextBox.Text, tempQuantity);
-
-            }
-            else
-            {
-                return null;
-            }
-
-        }
     }
 }
