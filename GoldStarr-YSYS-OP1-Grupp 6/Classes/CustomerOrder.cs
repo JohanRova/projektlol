@@ -26,6 +26,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
             else
             {
                 return null;
+                //
             }
         }
         public CustomerOrder(Customer customer, Merchandise merchandise, int amount)
@@ -34,6 +35,11 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
             OrderedProduct = merchandise;
             OrderingCustomer = customer;
             Amount = amount;
+        }
+
+        public string ConvertToSaveData()
+        {
+            return $"{OrderDateTime}¤{OrderingCustomer}¤{OrderedProduct}¤{Amount}";
         }
     }
 }

@@ -36,8 +36,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             store.TryFindingSaves();
             if(TempStores.SaveFilesFound)
             {
-                store.LoadMerchandiseStockToFile();
-                store.LoadCustomersFromFile();
+              //  store.LoadMerchandiseStockToFile();
+              //  store.LoadCustomersFromFile();
 
             }
             else
@@ -48,7 +48,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 TextBlockErrorMessageToCopy.Visibility = Visibility.Visible;
                 TextBlockErrorMessageToCopy.Text = store.GetErrors();
             }
-            
+            store.LoadCustomerOrdersFromFile();
         }
 
         public void HideInfo()
@@ -101,7 +101,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             store.SaveCustomersToFile();
             store.SaveMerchandiseStockToFile();
-            
+            store.SaveOrdersToFile();
         }
     }
 }

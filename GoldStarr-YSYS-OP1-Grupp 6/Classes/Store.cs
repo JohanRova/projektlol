@@ -25,9 +25,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
             CustomerOrderCollection = new ObservableCollection<CustomerOrder>();
-          //  PopulatateMerchandiseCollection();
-            //PopulateCustomerList();
-            PopulateCustomerOrderList();
+            PopulatateMerchandiseCollection();
+            PopulateCustomerList();
+            //pulateCustomerOrderList();
         }
 
 
@@ -57,9 +57,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public void PopulateCustomerOrderList()
         {
-            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Elin Ortega", "Rapphönevägen 23"), new Merchandise("Hallon", "Ica"), 1));
-            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Eva", "Ringsuvevägen 2"), new Merchandise("Blåbär", "Ica"), 3));
-            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Christian", "Malmövägen 13"), new Merchandise("Mango", "Ica"), 2));
+            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[1], MerchandiseCollection[1], 5));
+            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[2], MerchandiseCollection[2], 5));
+            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[3], MerchandiseCollection[3], 5));
         }
 
         private void AutoSaveToFileTimer()
@@ -168,6 +168,61 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 }
             }
         }
+
+        public async void SaveOrdersToFile()
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.CreateFileAsync("OrderSaveFile.sav", CreationCollisionOption.OpenIfExists);
+            var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
+            using (var outputStream = stream.GetOutputStreamAt(0))
+            {
+                using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
+                {
+                    for (int i = 0; i < CustomerOrderCollection.Count; i++)
+                    {
+                        dataWriter.WriteString($"{CustomerOrderCollection[i].ConvertToSaveData()}%\n");
+                        await dataWriter.StoreAsync();
+                        await outputStream.FlushAsync();
+                    }
+                }
+            }
+            stream.Dispose();
+        }
+        public async void LoadCustomerOrdersFromFile()
+        {
+            if (SaveFilesFound)
+            {
+                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+                StorageFile storageFile = await storageFolder.GetFileAsync("OrderSaveFile.sav");
+                string text;
+                var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
+                ulong size = stream.Size;
+                using (var inputStream = stream.GetInputStreamAt(0))
+                {
+                    using (var dataReader = new Windows.Storage.Streams.DataReader(inputStream))
+                    {
+                        uint numBytesLoaded = await dataReader.LoadAsync((uint)size);
+                        text = dataReader.ReadString(numBytesLoaded);
+                    }
+                }
+                text = text.Replace("\n", string.Empty);
+                string[] words = text.Split(new char[] { '%', '¤' });
+                for (int i = 0; i < words.Length - 1; i += 7)
+                {
+                    Customer tempcustomer = new Customer(words[i+1], words[i+2], words[i+3]);
+                    Merchandise tempmerch = new Merchandise(words[i + 4], words[i + 5], Int32.Parse(words[i + 6]));
+                    CustomerOrder tempOrder = new CustomerOrder(new Customer(words[i+1], words[i+2], words[i+3]), new Merchandise(words[i+4], words[i+5], Int32.Parse(words[i+6])), Int32.Parse(words[i + 7]));
+                    tempOrder.OrderDateTime = DateTime.Parse(words[i]);
+                    CustomerOrderCollection.Add(tempOrder);
+                }
+            }
+        }
+
+
+
+
+
+
         public async void TryFindingSaves()
         {
             try
