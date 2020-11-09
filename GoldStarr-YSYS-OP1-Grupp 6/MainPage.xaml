@@ -16,15 +16,16 @@
         <Button x:Name="ButtonMain" Content="Customers" Margin="10,150,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="ButtonMain_Click"/>
         <Button x:Name="ButtonStock" Content="Stock" Margin="10,80,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" Click="ButtonStock_Click" FontWeight="Bold"/>
         <TextBlock x:Name="CompanyName" HorizontalAlignment="Left" Margin="372,10,0,0" Text="GoldStarr Trading" TextWrapping="Wrap" VerticalAlignment="Top" Height="66" Width="514" FontSize="40" SelectionHighlightColor="#FFCBF7BB" Foreground="#FFA4B09F" FontFamily="Copperplate Gothic Light" TextAlignment="Center"/>
-        <Button x:Name="OrderButtom" Content="New order" Margin="10,222,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="OrderButtom_Click"/>
+        <Button x:Name="NewOrderButton" Content="New order" Margin="10,222,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="OrderButtom_Click"/>
         <TextBlock x:Name="MainPageHeader" HorizontalAlignment="Right" Margin="0,0,1504,924" Text="Information:" TextWrapping="Wrap" VerticalAlignment="Bottom" Height="45" Width="254" FontSize="36" FontWeight="Bold"/>
-        <Button x:Name="SaveButton" Content="Save merch" Margin="10,290,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="SaveButton_Click"/>
-        <Button x:Name="LoadButton" Content="Load merch" Margin="10,341,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="LoadButton_Click"/>
+        <Button x:Name="SaveButton" Content="Save merch" Margin="10,356,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="SaveButton_Click"/>
+        <Button x:Name="LoadButton" Content="Load merch" Margin="10,425,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="LoadButton_Click"/>
         <TextBlock x:Name="MainPageInfo" HorizontalAlignment="Left" Margin="162,163,0,0" Text="This software is optimized to run in a maximized window at a resolution of 1920 x 1080. &#xA;Please also make sure that your scaling is set to &quot;100%&quot; in your system settings. &#xA;&#xA;If you have any problems or need help, please contact GoldStarr Trading's IT Center at IT.Support@GoldStarrTrading.com" TextWrapping="Wrap" VerticalAlignment="Top" Height="115" Width="669"/>
         <TextBlock x:Name="TextBlockErrorHeader" HorizontalAlignment="Left" Margin="162,275,0,0" Text="Error message!" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="36" FontWeight="Bold" Visibility="Collapsed" Foreground="#FFBF0000"/>
         <TextBlock x:Name="TextBlockErrorMessages" HorizontalAlignment="Left" Margin="162,328,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="80" Width="540" Visibility="Collapsed"/>
         <TextBlock x:Name="TextBlockErrorMessageToCopy" HorizontalAlignment="Left" Margin="162,421,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="59" Width="348" Visibility="Collapsed" IsTextSelectionEnabled="True"/>
         <Button x:Name="ButtonSaveToFile" Content="Save files" Margin="1770,11,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="onSaveFileClick"/>
+        <Button x:Name="CustomerOrder_Button" Content="Orders" Margin="10,285,0,0" VerticalAlignment="Top" Height="46" Width="113" Background="#33A9C1A8" FontWeight="Bold" Click="CustomerOrderButton_Click"/>
 
     </Grid>
 </Page>

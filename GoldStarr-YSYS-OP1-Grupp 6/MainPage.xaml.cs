@@ -71,10 +71,15 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MainFrame.Navigate(typeof(CustomerList), store);
             HideInfo();
         }
-
         private void OrderButtom_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(NewOrder), store);
+            HideInfo();
+        }
+
+        private void CustomerOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(CustomerOrderPage), store);
             HideInfo();
         }
 
@@ -86,7 +91,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         }
 
-        private async void LoadButton_Click(object sender, RoutedEventArgs e)
+        private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
             store.LoadCustomersFromFile();
             store.LoadMerchandiseStockToFile();

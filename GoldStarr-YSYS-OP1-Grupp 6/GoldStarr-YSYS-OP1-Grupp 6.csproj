@@ -126,6 +126,9 @@
     <Compile Include="InFramePages\CustomerList.xaml.cs">
       <DependentUpon>CustomerList.xaml</DependentUpon>
     </Compile>
+    <Compile Include="InFramePages\CustomerOrderPage.xaml.cs">
+      <DependentUpon>CustomerOrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="InFramePages\StockPage.xaml.cs">
       <DependentUpon>StockPage.xaml</DependentUpon>
     </Compile>
@@ -162,6 +165,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="InFramePages\CustomerList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="InFramePages\CustomerOrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

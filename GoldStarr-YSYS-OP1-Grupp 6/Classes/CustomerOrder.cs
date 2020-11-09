@@ -16,12 +16,12 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
         // Denna metoden skapar nya klasser av typen CustomerOrder. Om lagersaldot är för litet så returneras null så detta bör has 
         //i åtanke. Metoden anropar konstruktorn för att skapa ett nytt objekt. Metoden räknar även ner produktens lagersaldo med samma
         //mängd som beställs
-        public static CustomerOrder CreateOrder(Customer orderingCustomer, Merchandise OrderedProduct, int orderedAmount)
+        public static CustomerOrder CreateOrder(Customer orderingCustomer, Merchandise orderedProduct, int orderedAmount)
         {
-            if(orderedAmount <= OrderedProduct.Stock)
+            if(orderedAmount <= orderedProduct.Stock)
             {
-                OrderedProduct.DecreaseStock(orderedAmount);
-                return new CustomerOrder(orderingCustomer, OrderedProduct, orderedAmount);
+                orderedProduct.DecreaseStock(orderedAmount);
+                return new CustomerOrder(orderingCustomer, orderedProduct, orderedAmount);
             }
             else
             {

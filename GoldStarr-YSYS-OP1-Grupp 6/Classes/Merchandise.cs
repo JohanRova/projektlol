@@ -22,6 +22,12 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
             Supplier = supplier;
             Stock = stock;
         }
+        public Merchandise(string name, string supplier)
+        {
+            Name = name;
+            Supplier = supplier;
+            
+        }
         public void ChangeStock(int newStock)
         {
             Stock = newStock;

@@ -16,7 +16,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public ObservableCollection<Merchandise> MerchandiseCollection;
         public ObservableCollection<Customer> CustomerCollection;
-        //public ObservableCollection<CustomerOrder> customerOrders;
+        public ObservableCollection<CustomerOrder> CustomerOrderCollection;
         private bool SaveFilesFound;
         private string errorMessage;
 
@@ -24,8 +24,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
-            PopulatateMerchandiseCollection();
-            PopulateCustomerList();
+            CustomerOrderCollection = new ObservableCollection<CustomerOrder>();
+          //  PopulatateMerchandiseCollection();
+            //PopulateCustomerList();
+            PopulateCustomerOrderList();
         }
 
 
@@ -51,6 +53,13 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             CustomerCollection.Add(new Customer("Richard Hendricks", "Mariedalsvägen 15, Malmö", "0733456145"));
             CustomerCollection.Add(new Customer("Arthur Shelby", "Lommavägen 13, Oxie"));
             
+        }
+
+        public void PopulateCustomerOrderList()
+        {
+            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Elin Ortega", "Rapphönevägen 23"), new Merchandise("Hallon", "Ica"), 1));
+            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Eva", "Ringsuvevägen 2"), new Merchandise("Blåbär", "Ica"), 3));
+            CustomerOrderCollection.Add(new CustomerOrder(new Customer("Christian", "Malmövägen 13"), new Merchandise("Mango", "Ica"), 2));
         }
 
         private void AutoSaveToFileTimer()
