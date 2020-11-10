@@ -47,7 +47,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             CustomerOrderCollection.Reverse<CustomerOrder>();
         }
 
-        private void OnClickLOL(object sender, RoutedEventArgs e)
+        private void OnClickSortOrders(object sender, RoutedEventArgs e)
         {
             CustomerOrderCollection = new ObservableCollection<CustomerOrder>(CustomerOrderCollection.Reverse());
             CustomerOrderListListView.ItemsSource = CustomerOrderCollection;

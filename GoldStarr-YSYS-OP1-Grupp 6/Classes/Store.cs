@@ -18,7 +18,6 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public ObservableCollection<Customer> CustomerCollection;
         public ObservableCollection<CustomerOrder> CustomerOrderCollection;
         public ObservableCollection<CustomerOrder> BacklogCustomerOrderCollection;
-        private bool SaveFilesFound;
         private string errorMessage = string.Empty;
 
         public Store()
@@ -254,20 +253,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
 
 
-        public async void TryFindingSaves(string SaveFileName)
-        {
-            try
-            {
-                StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile storageFile = await storageFolder.GetFileAsync(SaveFileName);
-                SaveFilesFound = true;
-                TempStores.SaveFilesFound = true;
-            }
-            catch(System.IO.FileNotFoundException e)
-            {
-                errorMessage += $"{e.Message}\n";
-            }
-        }
+        
         public string GetErrors()
         {
             return errorMessage;
