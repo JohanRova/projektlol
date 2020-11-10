@@ -19,7 +19,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public ObservableCollection<CustomerOrder> CustomerOrderCollection;
         public ObservableCollection<CustomerOrder> BacklogCustomerOrderCollection;
         private bool SaveFilesFound;
-        private string errorMessage;
+        private string errorMessage = string.Empty;
 
         public Store()
         {
@@ -30,6 +30,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             /*PopulatateMerchandiseCollection();
             PopulateCustomerList();
             PopulateCustomerOrderList();*/
+            AutoSaveToFileTimer();
         }
 
 
@@ -69,7 +70,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             DispatcherTimer dispatcherTimer;
             dispatcherTimer = new DispatcherTimer();
             dispatcherTimer.Tick += AutosaveToFile;
-            dispatcherTimer.Interval = new TimeSpan(0, 0, 10);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 30);
             dispatcherTimer.Start();
         }
 
@@ -77,6 +78,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             SaveCustomersToFile();
             SaveMerchandiseStockToFile();
+            SaveCustomerOrderToFile("OrderSaveFile.sav", CustomerOrderCollection);
+            SaveCustomerOrderToFile("BacklogFile.sav", BacklogCustomerOrderCollection);
         }
         public async void SaveMerchandiseStockToFile()
         {
@@ -190,12 +193,13 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             }
             stream.Dispose();
         }
-        public async void LoadCustomerOrdersFromFile()
+        
+        public async void LoadCustomerOrdersFromFile(string SaveFileName, ObservableCollection<CustomerOrder> customerOrders)
         {
             if (SaveFilesFound)
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile storageFile = await storageFolder.GetFileAsync("OrderSaveFile.sav");
+                StorageFile storageFile = await storageFolder.GetFileAsync(SaveFileName);
                 string text;
                 var stream = await storageFile.OpenAsync(Windows.Storage.FileAccessMode.Read);
                 ulong size = stream.Size;
@@ -213,28 +217,43 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 {
                     CustomerOrder tempOrder = new CustomerOrder(new Customer(words[i+1], words[i+2], words[i+3]), new Merchandise(words[i+5], words[i+6], Int32.Parse(words[i+7])), Int32.Parse(words[i + 9]));
                     tempOrder.OrderDateTime = DateTime.Parse(words[i]);
-                    CustomerOrderCollection.Add(tempOrder);
+                    customerOrders.Add(tempOrder);
                 }
             }
         }
+        public async void SaveCustomerOrderToFile(string SaveFileName, ObservableCollection<CustomerOrder> customerOrders)
+        {
+            StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
+            StorageFile storageFile = await storageFolder.CreateFileAsync(SaveFileName, CreationCollisionOption.OpenIfExists);
+            var stream = await storageFile.OpenAsync(FileAccessMode.ReadWrite);
+            using (var outputStream = stream.GetOutputStreamAt(0))
+            {
+                using (var dataWriter = new Windows.Storage.Streams.DataWriter(outputStream))
+                {
+                    for (int i = 0; i < customerOrders.Count; i++)
+                    {
+                        dataWriter.WriteString($"{customerOrders[i].ConvertToSaveData()}%\n");
+                        await dataWriter.StoreAsync();
+                        await outputStream.FlushAsync();
+                    }
+                }
+            }
+            stream.Dispose();
+        }
 
 
-
-
-
-
-        public async void TryFindingSaves()
+        public async void TryFindingSaves(string SaveFileName)
         {
             try
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
-                StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
+                StorageFile storageFile = await storageFolder.GetFileAsync(SaveFileName);
                 SaveFilesFound = true;
                 TempStores.SaveFilesFound = true;
             }
             catch(System.IO.FileNotFoundException e)
             {
-                errorMessage = e.Message;
+                errorMessage += $"{e.Message}\n";
             }
         }
         public string GetErrors()

@@ -33,22 +33,24 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         {
             this.InitializeComponent();
             TempStores.ResetProperties();
-            store.TryFindingSaves();
+            store.TryFindingSaves("CustomerSaveFile.sav");
+            store.TryFindingSaves("MerchandiseSaveFile.sav");
+            store.TryFindingSaves("OrderSaveFile");
             if(TempStores.SaveFilesFound)
             {
-              //  store.LoadMerchandiseStockToFile();
-              //  store.LoadCustomersFromFile();
-
+                store.LoadMerchandiseStockToFile();
+                store.LoadCustomerOrdersFromFile("OrderSaveFile.sav", store.CustomerOrderCollection);
+                store.LoadCustomerOrdersFromFile("BacklogFile.sav", store.BacklogCustomerOrderCollection);
+                store.LoadCustomersFromFile();
             }
             else
             {
                 TextBlockErrorHeader.Visibility = Visibility.Visible;
                 TextBlockErrorMessages.Visibility = Visibility.Visible;
                 TextBlockErrorMessages.Text = "There was a problem finding the save files! If you don't have anything saved to file, or this is the first time running the program, please ignore this message. The below error message can be copied and sent to GoldStarr IT: ";
-                //TextBlockErrorMessageToCopy.Visibility = Visibility.Visible;
-                //TextBlockErrorMessageToCopy.Text = store.GetErrors();
+                TextBlockErrorMessageToCopy.Visibility = Visibility.Visible;
+                TextBlockErrorMessageToCopy.Text = store.GetErrors();
             }
-            store.LoadCustomerOrdersFromFile();
         }
 
         public void HideInfo()
@@ -93,15 +95,16 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         private void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            store.LoadCustomersFromFile();
-            store.LoadMerchandiseStockToFile();
+            /*store.LoadCustomerOrdersFromFile();
+            store.LoadMerchandiseStockToFile();*/
         }
 
         private void onSaveFileClick(object sender, RoutedEventArgs e)
         {
             store.SaveCustomersToFile();
             store.SaveMerchandiseStockToFile();
-            store.SaveOrdersToFile();
+            store.SaveCustomerOrderToFile("OrderSaveFile.sav", store.CustomerOrderCollection);
+            store.SaveCustomerOrderToFile("BacklogFile.sav", store.BacklogCustomerOrderCollection);
         }
     }
 }

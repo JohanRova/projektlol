@@ -41,5 +41,16 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             CustomerOrderCollection = store.CustomerOrderCollection;
             CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerOrderCollection.Reverse<CustomerOrder>();
+        }
+
+        private void OnClickLOL(object sender, RoutedEventArgs e)
+        {
+            store.CustomerOrderCollection.Reverse();
+            CustomerOrderListListView.ItemsSource = store.CustomerOrderCollection;
+        }
     }
 }
