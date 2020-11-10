@@ -17,6 +17,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public ObservableCollection<Merchandise> MerchandiseCollection;
         public ObservableCollection<Customer> CustomerCollection;
         public ObservableCollection<CustomerOrder> CustomerOrderCollection;
+        public ObservableCollection<CustomerOrder> BacklogCustomerOrderCollection;
         private bool SaveFilesFound;
         private string errorMessage;
 
@@ -25,6 +26,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
             CustomerOrderCollection = new ObservableCollection<CustomerOrder>();
+            BacklogCustomerOrderCollection = new ObservableCollection<CustomerOrder>();
             /*PopulatateMerchandiseCollection();
             PopulateCustomerList();
             PopulateCustomerOrderList();*/
@@ -57,9 +59,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
 
         public void PopulateCustomerOrderList()
         {
-            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[1], MerchandiseCollection[1], 5));
-            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[2], MerchandiseCollection[2], 5));
-            CustomerOrderCollection.Add(CustomerOrder.CreateOrder(CustomerCollection[3], MerchandiseCollection[3], 5));
+            CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[1], MerchandiseCollection[1], 5));
+            CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[2], MerchandiseCollection[2], 5));
+            CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[3], MerchandiseCollection[3], 5));
         }
 
         private void AutoSaveToFileTimer()

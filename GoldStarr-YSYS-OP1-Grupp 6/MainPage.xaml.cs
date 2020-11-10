@@ -45,8 +45,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 TextBlockErrorHeader.Visibility = Visibility.Visible;
                 TextBlockErrorMessages.Visibility = Visibility.Visible;
                 TextBlockErrorMessages.Text = "There was a problem finding the save files! If you don't have anything saved to file, or this is the first time running the program, please ignore this message. The below error message can be copied and sent to GoldStarr IT: ";
-                TextBlockErrorMessageToCopy.Visibility = Visibility.Visible;
-                TextBlockErrorMessageToCopy.Text = store.GetErrors();
+                //TextBlockErrorMessageToCopy.Visibility = Visibility.Visible;
+                //TextBlockErrorMessageToCopy.Text = store.GetErrors();
             }
             store.LoadCustomerOrdersFromFile();
         }

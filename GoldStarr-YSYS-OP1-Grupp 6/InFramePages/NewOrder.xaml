@@ -14,9 +14,9 @@
         <Frame x:Name="inNewOrderFramStock" Content="" Margin="520,75,0,0" HorizontalAlignment="Left" Width="510" Height="871" VerticalAlignment="Top"/>
         <TextBox x:Name="OrderAmountBox" HorizontalAlignment="Left" Margin="1035,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" PlaceholderText="Amount to order"/>
         <Button x:Name="MakeOrderButton" Content="Order" Margin="1260,176,0,0" VerticalAlignment="Top" Click="MakeOrderButton_Click"/>
-        <TextBlock x:Name="NotEnoughInStockPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Not enough items in stock to make this order!" TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="NotEnoughInStockPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Not enough items in stock, the order has been placed in the backlog!" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
         <TextBlock x:Name="NoAmountEnteredPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Please enter an amount." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
-        <TextBlock x:Name="ListViewSelectionPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Please make a selection from both lists." TextWrapping="Wrap" VerticalAlignment="Top" Height="31" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
+        <TextBlock x:Name="ListViewSelectionPrompt" HorizontalAlignment="Left" Margin="1035,214,0,0" Text="Please make a selection from both lists." TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="307" FontWeight="Bold" Foreground="#FFD10000"/>
         <TextBlock HorizontalAlignment="Left" Margin="1030,75,0,0" Text="To make a new order please select a customer and an item from the lists. Enter the amount to order to the customer, then press order. " TextWrapping="Wrap" VerticalAlignment="Top" Height="62" Width="284" FocusVisualSecondaryBrush="{x:Null}"/>
         <Rectangle HorizontalAlignment="Left" Height="81" Margin="1024,63,0,0" Stroke="Black" VerticalAlignment="Top" Width="297"/>
         <Popup x:Name="OrderMadePopUp" Margin="1027,238,349,688" IsOpen="True">

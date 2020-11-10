@@ -30,19 +30,15 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         private Store store;
         private ObservableCollection<Customer> CustomerCollection;
         private ObservableCollection<Merchandise> MerchandiseCollection;
-        private ObservableCollection<CustomerOrder> customerOrders;
-
 
         public void ClearTextBox()
         {
-            OrderAmountBox.Text = string.Empty;
-            
+            OrderAmountBox.Text = string.Empty;         
         }
 
         public NewOrder()
         {
             this.InitializeComponent();
-            customerOrders = new ObservableCollection<CustomerOrder>();
             TempStores.ResetProperties();
             OrderMadePopUp.IsOpen = false;
         }
@@ -85,27 +81,37 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             {
                 if (!string.IsNullOrWhiteSpace(tempAmountBox))
                 {
-                    CustomerOrder tempObj = CustomerOrder.CreateOrder(store.CustomerCollection[TempStores.CustomerIndexTemp], store.MerchandiseCollection[TempStores.MerchandiseIndexTemp], Int32.Parse(OrderAmountBox.Text));
-                    if (tempObj != null)
+                    CustomerOrder tempObj = new CustomerOrder(store.CustomerCollection[TempStores.CustomerIndexTemp], store.MerchandiseCollection[TempStores.MerchandiseIndexTemp], Int32.Parse(OrderAmountBox.Text));
+
+                    if (tempObj != null && tempObj.Amount <= (store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Stock))
                     {
-                        customerOrders.Add(tempObj);
-                        Merchandise merchtemp = MerchandiseCollection[TempStores.MerchandiseIndexTemp];
-                        MerchandiseCollection.Insert(TempStores.MerchandiseIndexTemp, merchtemp);
-                        MerchandiseCollection.RemoveAt(TempStores.MerchandiseIndexTemp + 1);
+
                         NotEnoughInStockPrompt.Visibility = Visibility.Collapsed;
                         NoAmountEnteredPrompt.Visibility = Visibility.Collapsed;
                         ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
+
+                        // when enough in stock for new order: 
+                        // add order to list for paid and delivered orders - CustomerOrderCollection
+                        // decrease merchandise stock quantity with the size of the customer order - tempObj - and update list.
+                        store.CustomerOrderCollection.Add(tempObj);
+                        Merchandise merchtemp = store.MerchandiseCollection[TempStores.MerchandiseIndexTemp];
+                        merchtemp.DecreaseStock(tempObj.Amount);
+                        store.MerchandiseCollection.Insert(TempStores.MerchandiseIndexTemp, merchtemp);
+                        store.MerchandiseCollection.RemoveAt(TempStores.MerchandiseIndexTemp + 1);
+
                         TempStores.MerchandiseIndexTemp = -1;
                         OrderAmountBox.Text = string.Empty;
                         //OrderMadePrompt.Visibility = Visibility.Visible;
                         OrderMadePopUp.IsOpen = true;
                         TimerSetUp();
                     }
-                    else
+                    // when not enough in stock for new order:
+                    // add the placed order to the backlog - BacklogCustomerOrderCollection
+                    else if (tempObj.Amount > store.MerchandiseCollection[TempStores.MerchandiseIndexTemp].Stock)
                     {
+                        store.BacklogCustomerOrderCollection.Add(tempObj);
                         NotEnoughInStockPrompt.Visibility = Visibility.Visible;
                         ListViewSelectionPrompt.Visibility = Visibility.Collapsed;
-
                     }
                 }
                 else
