@@ -16,12 +16,12 @@
                 <DataTemplate>
                     <StackPanel x:Name="StackList" Orientation="Horizontal">
 
-                        <TextBlock Text="{Binding OrderingCustomer.Name}" Margin="5, 10, 0, 0" Width="200"/>
-                        <TextBlock Text="{Binding OrderingCustomer.Address}" Margin="5, 10, 0, 0" Width="200"/>
-                        <TextBlock Text="{Binding OrderedProduct.Name}" Margin="5, 10, 0, 0" Width="200"/>
-                        <TextBlock Text="{Binding OrderedProduct.Supplier}" Margin="5, 10, 0, 0" Width="200"/>
-                        <TextBlock Text="{Binding Amount}" Margin="5, 10, 0, 0" Width="40"/>
-                        <TextBlock Text="{Binding OrderDateTime}" Margin="5, 10, 0, 0" Width="150"/>
+                        <TextBlock Text="{Binding OrderingCustomer.Name, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="200"/>
+                        <TextBlock Text="{Binding OrderingCustomer.Address, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="200"/>
+                        <TextBlock Text="{Binding OrderedProduct.Name, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="200"/>
+                        <TextBlock Text="{Binding OrderedProduct.Supplier, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="200"/>
+                        <TextBlock Text="{Binding Amount, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="40"/>
+                        <TextBlock Text="{Binding OrderDateTime, Mode=TwoWay}" Margin="5, 10, 0, 0" Width="150"/>
 
                     </StackPanel>
                 </DataTemplate>

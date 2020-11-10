@@ -49,8 +49,8 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
 
         private void OnClickLOL(object sender, RoutedEventArgs e)
         {
-            store.CustomerOrderCollection.Reverse();
-            CustomerOrderListListView.ItemsSource = store.CustomerOrderCollection;
+            CustomerOrderCollection = new ObservableCollection<CustomerOrder>(CustomerOrderCollection.Reverse());
+            CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
         }
     }
 }

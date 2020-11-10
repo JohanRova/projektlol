@@ -102,7 +102,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
         public async void LoadMerchandiseStockToFile()
         {
-            if (SaveFilesFound)
+            try
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 StorageFile storageFile = await storageFolder.GetFileAsync("MerchandiseSaveFile.sav");
@@ -126,6 +126,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                     MerchandiseCollection.Add(tempMerch);
                 }
             }
+            catch (System.IO.FileNotFoundException e)
+            {
+                errorMessage += $"{e.Message}\n";
+            }
         }
         public async void SaveCustomersToFile()
         {
@@ -148,7 +152,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         }
         public async void LoadCustomersFromFile()
         {
-            if (SaveFilesFound)
+            try
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 StorageFile storageFile = await storageFolder.GetFileAsync("CustomerSaveFile.sav");
@@ -171,6 +175,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                     Customer tempCustomer = new Customer(words[i], words[i + 1], words[i + 2]);
                     CustomerCollection.Add(tempCustomer);
                 }
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                errorMessage += $"{e.Message}\n";
             }
         }
 
@@ -196,7 +204,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         
         public async void LoadCustomerOrdersFromFile(string SaveFileName, ObservableCollection<CustomerOrder> customerOrders)
         {
-            if (SaveFilesFound)
+            try
             {
                 StorageFolder storageFolder = ApplicationData.Current.LocalFolder;
                 StorageFile storageFile = await storageFolder.GetFileAsync(SaveFileName);
@@ -219,6 +227,10 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                     tempOrder.OrderDateTime = DateTime.Parse(words[i]);
                     customerOrders.Add(tempOrder);
                 }
+            }
+            catch (System.IO.FileNotFoundException e)
+            {
+                errorMessage += $"{e.Message}\n";
             }
         }
         public async void SaveCustomerOrderToFile(string SaveFileName, ObservableCollection<CustomerOrder> customerOrders)
