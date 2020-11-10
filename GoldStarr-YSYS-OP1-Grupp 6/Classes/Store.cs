@@ -25,9 +25,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             MerchandiseCollection = new ObservableCollection<Merchandise>();
             CustomerCollection = new ObservableCollection<Customer>();
             CustomerOrderCollection = new ObservableCollection<CustomerOrder>();
-            PopulatateMerchandiseCollection();
+            /*PopulatateMerchandiseCollection();
             PopulateCustomerList();
-            //pulateCustomerOrderList();
+            PopulateCustomerOrderList();*/
         }
 
 
@@ -207,11 +207,9 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
                 }
                 text = text.Replace("\n", string.Empty);
                 string[] words = text.Split(new char[] { '%', '¤' });
-                for (int i = 0; i < words.Length - 1; i += 7)
+                for (int i = 0; i < words.Length - 1; i += 10)
                 {
-                    Customer tempcustomer = new Customer(words[i+1], words[i+2], words[i+3]);
-                    Merchandise tempmerch = new Merchandise(words[i + 4], words[i + 5], Int32.Parse(words[i + 6]));
-                    CustomerOrder tempOrder = new CustomerOrder(new Customer(words[i+1], words[i+2], words[i+3]), new Merchandise(words[i+4], words[i+5], Int32.Parse(words[i+6])), Int32.Parse(words[i + 7]));
+                    CustomerOrder tempOrder = new CustomerOrder(new Customer(words[i+1], words[i+2], words[i+3]), new Merchandise(words[i+5], words[i+6], Int32.Parse(words[i+7])), Int32.Parse(words[i + 9]));
                     tempOrder.OrderDateTime = DateTime.Parse(words[i]);
                     CustomerOrderCollection.Add(tempOrder);
                 }
