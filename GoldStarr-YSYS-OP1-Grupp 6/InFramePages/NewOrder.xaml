@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="974" Width="1687">
 
     <Grid>
-        <TextBlock x:Name="LOLE" HorizontalAlignment="Left" Margin="20,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="312" FontSize="32"/>
+        <TextBlock x:Name="NewOrderTextBlock" HorizontalAlignment="Left" Margin="20,10,0,0" Text="New order" TextWrapping="Wrap" VerticalAlignment="Top" Height="56" Width="312" FontSize="32"/>
         <Frame x:Name="inNewOrderFramCustomer" Content="" Margin="10,75,0,0" HorizontalAlignment="Left" Width="510" Height="899" VerticalAlignment="Top"/>
         <Frame x:Name="inNewOrderFramStock" Content="" Margin="520,75,0,0" HorizontalAlignment="Left" Width="510" Height="871" VerticalAlignment="Top"/>
         <TextBox x:Name="OrderAmountBox" HorizontalAlignment="Left" Margin="1035,176,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="195" PlaceholderText="Amount to order"/>

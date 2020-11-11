@@ -25,11 +25,6 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.Classes
             PhoneNumber = phonenumber;
         }
 
-    /*public Customer(string name, string address, string phonenumber)
-        {
-            Name = name;
-            Address = address;
-            PhoneNumber = phonenumber;
-        }*/
+   
     }
 }
