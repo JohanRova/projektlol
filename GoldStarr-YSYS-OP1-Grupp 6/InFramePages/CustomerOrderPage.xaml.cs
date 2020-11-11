@@ -42,15 +42,22 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
             CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            CustomerOrderCollection.Reverse<CustomerOrder>();
-        }
-
+        int temp = 1;
         private void OnClickSortOrders(object sender, RoutedEventArgs e)
         {
-            CustomerOrderCollection = new ObservableCollection<CustomerOrder>(CustomerOrderCollection.Reverse());
-            CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
+            temp++;
+            if ((temp % 2) == 0)
+            {
+                CustomerOrderCollection = new ObservableCollection<CustomerOrder>(CustomerOrderCollection.OrderBy(i => i.OrderDateTime));
+                CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
+                ButtonSortOrder.Content = "Sort orders by date, descending.";
+            }
+            else
+            {
+                CustomerOrderCollection = new ObservableCollection<CustomerOrder>(CustomerOrderCollection.OrderByDescending(i => i.OrderDateTime));
+                CustomerOrderListListView.ItemsSource = CustomerOrderCollection;
+                ButtonSortOrder.Content = "Sort orders by date, ascending.";
+            }
         }
     }
 }

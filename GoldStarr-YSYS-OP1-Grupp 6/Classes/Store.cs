@@ -59,12 +59,12 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             
         }
 
-        public void PopulateCustomerOrderList()
+        /*public void PopulateCustomerOrderList()
         {
             CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[1], MerchandiseCollection[1], 5));
             CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[2], MerchandiseCollection[2], 5));
             CustomerOrderCollection.Add(new CustomerOrder(CustomerCollection[3], MerchandiseCollection[3], 5));
-        }
+        }*/
 
         private void AutoSaveToFileTimer()
         {
