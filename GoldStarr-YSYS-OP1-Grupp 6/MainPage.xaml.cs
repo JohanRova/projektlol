@@ -112,5 +112,11 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             store.SaveCustomerOrderToFile("OrderSaveFile.sav", store.CustomerOrderCollection);
             store.SaveCustomerOrderToFile("BacklogFile.sav", store.BacklogCustomerOrderCollection);
         }
+
+        private void GoToSupplierPageButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(SupplierPage), store);
+            HideInfo();
+        }
     }
 }

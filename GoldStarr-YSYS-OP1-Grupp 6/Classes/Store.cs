@@ -18,6 +18,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
         public ObservableCollection<Customer> CustomerCollection;
         public ObservableCollection<CustomerOrder> CustomerOrderCollection;
         public ObservableCollection<CustomerOrder> BacklogCustomerOrderCollection;
+        public ObservableCollection<string> SupplierCollection;
         private string errorMessage = string.Empty;
 
         public Store()
@@ -26,6 +27,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             CustomerCollection = new ObservableCollection<Customer>();
             CustomerOrderCollection = new ObservableCollection<CustomerOrder>();
             BacklogCustomerOrderCollection = new ObservableCollection<CustomerOrder>();
+            SupplierCollection = new ObservableCollection<string>();
             /*PopulatateMerchandiseCollection();
             PopulateCustomerList();
             PopulateCustomerOrderList();*/
