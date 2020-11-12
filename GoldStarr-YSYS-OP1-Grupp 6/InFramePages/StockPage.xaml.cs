@@ -56,7 +56,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6.InFramePages
         {
             if (TempStores.MerchandiseIndexTemp >= 0)
             {
-                if (!string.IsNullOrWhiteSpace(AmountBox.Text))
+                if (!string.IsNullOrWhiteSpace(AmountBox.Text) && Int32.TryParse(AmountBox.Text, out int p))
                 {
                     Merchandise merchtemp = MerchandiseList[index];
                     merchtemp.IncreaseStock(Int32.Parse(AmountBox.Text));

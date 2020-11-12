@@ -79,7 +79,7 @@ namespace GoldStarr_YSYS_OP1_Grupp_6
             string tempAmountBox = OrderAmountBox.Text;
             if ((TempStores.MerchandiseIndexTemp >= 0) && (TempStores.CustomerIndexTemp >= 0))
             {
-                if (!string.IsNullOrWhiteSpace(tempAmountBox))
+                if (!string.IsNullOrWhiteSpace(tempAmountBox) && Int32.TryParse(tempAmountBox, out int p))
                 {
                     CustomerOrder tempObj = new CustomerOrder(store.CustomerCollection[TempStores.CustomerIndexTemp], store.MerchandiseCollection[TempStores.MerchandiseIndexTemp], Int32.Parse(OrderAmountBox.Text));
 
